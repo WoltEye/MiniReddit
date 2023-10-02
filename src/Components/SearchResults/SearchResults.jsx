@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { clearSubredditData, loadSearchResults, selectIsLoading, selectSearchResults, loadComments, loadMoreSearchResults, selectNewSearchResultsIsLoading, clearSearchResults, selectSubredditData } from '../../Features/Api/redditApiSlice';
-import { changeCurrentPage, changeCurrentSearchSort, changeSearchType, resetSearchType, selectCurrentPage, selectCurrentSearchType, selectNightmode } from '../../Features/CurrentPage/currentPageSlice';
+import { changeCurrentPage, changeCurrentSearchSort, changeCurrentSearchTimeSort, changeSearchType, resetSearchFilters, resetSearchType, selectCurrentPage, selectCurrentSearchType, selectNightmode } from '../../Features/CurrentPage/currentPageSlice';
 import './SearchResults.css';
 import CommentsOverlay from '../CommentsOverlay/CommentsOverlay';
 import Spinner from '../../Components/Spinner/Spinner';
@@ -27,6 +27,7 @@ export default function SearchResults() {
   const q = params.get('q');
   const type = params.get('type');
   const sort = params.get('sort');
+  const timeSort = params.get('t');
   const dispatch = useDispatch();
 
   const loadCommentsFromApi = url => {
@@ -57,14 +58,20 @@ export default function SearchResults() {
     if(currentPage !== 'search') {
     dispatch(changeCurrentPage('search'));
     }
-    if(q && type && type === searchType && !sort) {;
+    if(q && type && type === searchType && !sort && !timeSort) {;
     dispatch(loadSearchResults({searchTerm: q, type: searchType}));
+    dispatch(resetSearchFilters());
     }
-    if(sort && q && type && type === searchType) {
-      dispatch(changeCurrentSearchSort(capitalizeFirstLetter(sort)));
+    if(sort && q && type && type === searchType && !timeSort) {
+      dispatch(changeCurrentSearchSort(sort));
       dispatch(loadSearchResults({searchTerm: q, type: searchType, sort}))
     }
-  }, [searchType, q, sort])
+    if(sort && q && type === searchType && timeSort) {
+      dispatch(changeCurrentSearchSort(sort))
+      dispatch(changeCurrentSearchTimeSort(timeSort));
+      dispatch(loadSearchResults({searchTerm: q, type: searchType, sort, timeSort}))
+    }
+  }, [searchType, q, sort, timeSort])
 
   return (
     <>

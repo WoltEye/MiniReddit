@@ -130,3 +130,32 @@ export const convertToEmbeddedURL = (inputURL) => {
     return;
   }
 }
+
+export const getSearchFilterDisplayName = (filter) => {
+  switch(filter) {
+    case 'relevance':
+      return 'Relevance';
+    case 'hot':
+      return 'Hot';
+    case 'top': 
+      return 'Top';
+    case 'new':
+      return 'New';
+    case 'comments':
+      return 'Most Comments' 
+    case 'all':
+      return 'All Time';
+    case 'year':
+      return 'Past Year';
+    case 'month':
+      return 'Past Month';
+    case 'week': 
+      return 'Past Week';
+    case 'day':
+      return 'Past 24 Hours'
+    case 'hour':
+      return 'Past Hour'
+    default:
+      return filter;
+  }
+}

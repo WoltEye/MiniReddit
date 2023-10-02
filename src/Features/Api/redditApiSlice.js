@@ -55,7 +55,7 @@ export const loadComments = createAsyncThunk(
 export const loadSearchResults = createAsyncThunk(
   'redditApi/loadSearchResults',
   async (arg) => {
-    const url = `https://api.reddit.com/search?q=${arg.searchTerm}&type=${arg.type}${arg.sort ? `&sort=${arg.sort}` : ''}&raw_json=true`;
+    const url = `https://api.reddit.com/search?q=${arg.searchTerm}&type=${arg.type}${arg.sort ? `&sort=${arg.sort}` : ''}${arg.timeSort ? `&t=${arg.timeSort}` : ''}&raw_json=true`;
     console.info('Loading search results. URL: ' + url);
     const res = await fetch(url);
     const json = await res.json();
@@ -66,7 +66,7 @@ export const loadSearchResults = createAsyncThunk(
 export const loadMoreSearchResults = createAsyncThunk(
   'redditApi/loadMoreSearchResults',
   async (arg) => {
-    const url = `https://api.reddit.com/search?q=${arg.searchTerm}&type=${arg.type}&after=${arg.after}${arg.sort ? `&sort=${arg.sort}` : ''}&raw_json=true`;
+    const url = `https://api.reddit.com/search?q=${arg.searchTerm}&type=${arg.type}&after=${arg.after}${arg.sort ? `&sort=${arg.sort}` : ''}${arg.timeSort ? `&t=${arg.timeSort}` : ''}&raw_json=true`;
     console.info('Loading search results. URL: ' + url);
     const res = await fetch(url);
     const json = await res.json();

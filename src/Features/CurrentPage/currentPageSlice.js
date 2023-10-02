@@ -7,6 +7,7 @@ const currentPageSlice = createSlice({
     currentFilterMethod: '',
     currentTopOfFilter: '',
     currentSearchSort: '',
+    currentSearchTimeSort: '',
     currentSearchType: 'link',
     currentUserFeedFilter: 'overview',
     nightmode: true
@@ -41,6 +42,13 @@ const currentPageSlice = createSlice({
     },
     changeCurrentSearchSort: (state, action) => {
       state.currentSearchSort = action.payload;
+    },
+    changeCurrentSearchTimeSort: (state, action) => {
+      state.currentSearchTimeSort = action.payload;
+    },
+    resetSearchFilters: (state) => {
+      state.currentSearchSort = '';
+      state.currentSearchTimeSort = '';
     }
   }
 })
@@ -53,6 +61,7 @@ export const selectNightmode = state => state.currentPage.nightmode;
 export const selectCurrentSearchType = state => state.currentPage.currentSearchType;
 export const selectCurrentSearchSort = state => state.currentPage.currentSearchSort;
 export const selectCurrentUserFeedFilter = state => state.currentPage.currentUserFeedFilter;
+export const selectCurrentSearchTimeSort = state => state.currentPage.currentSearchTimeSort;
 
 export const { changeCurrentPage,
                changeCurrentFilterMethod,
@@ -63,5 +72,8 @@ export const { changeCurrentPage,
                changeSearchType, 
                resetSearchType,
                resetUserFeedFilter,
-              changeCurrentSearchSort } = currentPageSlice.actions;
+               changeCurrentSearchSort,
+               changeCurrentSearchTimeSort,
+               resetSearchFilters
+               } = currentPageSlice.actions;
 export default currentPageSlice.reducer;
