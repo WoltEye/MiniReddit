@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './SecondaryNavBar.css';
@@ -18,7 +18,10 @@ export default function SecondaryNavBar() {
   const subredditData = useSelector(selectSubredditData);
   const nightMode = useSelector(selectNightmode);
   const { subreddit } = useParams();
-
+  const location = useLocation();
+  const search = location.search;
+  const params = new URLSearchParams(search);
+  const time = params.get('t');
 
 
   return (
@@ -42,7 +45,7 @@ export default function SecondaryNavBar() {
       </div>
       </NavLink>
       <NavLink 
-      to={subreddit ? `/r/${subreddit}/top` : '/r/all/top'} 
+      to={subreddit ? `/r/${subreddit}/top${time ? `?t=${time}` : ''}` : `/r/all/top${time ? `?t=${time}` : ''}`} 
       className={isLoading ? 'loading' : ''}>
         <div className={currentFilter !== 'top' ? 'navlink-container top' : 'navlink-container top active'}>
           <TopSVG selected={currentFilter === 'top' ? true : false} />

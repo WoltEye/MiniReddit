@@ -5,11 +5,13 @@ import { capitalizeFirstLetter } from '../../../utils/helperFunctions';
 import './DropdownMenu.css';
 import DropdownSVG from '../../../assets/DropdownSVG.jsx';
 import { selectNightmode, setTopOfFilter } from '../../../Features/CurrentPage/currentPageSlice.js'
+import { selectIsLoading } from '../../../Features/Api/redditApiSlice';
 
 export default function DropdownMenu() {
   const [ showOptions, setShowOptions ] = useState(false);
   const [ timeoutId, setTimeoutId ] = useState(null);
   const nightMode = useSelector(selectNightmode);
+  const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
 
   const ACCEPTED_TOP_OF_VALUES = ['hour', 'day', 'week', 'month', 'year', 'all']
@@ -17,11 +19,6 @@ export default function DropdownMenu() {
   const params = new URLSearchParams(search);
   const t = params.get('t');
   const validTopOf = t && ACCEPTED_TOP_OF_VALUES.includes(t.toLocaleLowerCase()) ? capitalizeFirstLetter(t) : 'Today';
-
-    const handleKeyPress = e => {
-      console.log('yo');
-      }
-    
 
     const closeDropdownAnywhere = e => {
         e.stopPropagation()
@@ -61,7 +58,7 @@ export default function DropdownMenu() {
     <div className={nightMode ? 'top-of-the dark' : 'top-of-the light'}>
     <div 
     className='top-of-the-content-container'
-    onClick={() => {setShowOptions(!showOptions)}}>
+    onClick={() => { setShowOptions(!showOptions) }}>
       <p>
         {
          validTopOf === 'Hour' ? 'Now'

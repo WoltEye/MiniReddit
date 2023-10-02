@@ -9,7 +9,8 @@ export const loadData = createAsyncThunk(
     const url = arg.subreddit === undefined ? 
     'https://api.reddit.com/r/all/best.json?raw_json&limit=30' : 
     `https://api.reddit.com/r/${arg.filterMethod ? `${arg.subreddit}/${arg.filterMethod}` : arg.subreddit}.json?raw_json=true&limit=30${arg.topOfFilter ? `&t=${arg.topOfFilter}` : ''}`;  
-     console.log(url);  
+     console.log(url); 
+     console.log(arg); 
      const response = await fetch(url);
       const json = await response.json();
       return json;
@@ -21,8 +22,8 @@ export const loadMoreData = createAsyncThunk(
   'redditApi/loadMoreData',
   async (arg) => {
     const url = arg.subreddit !== undefined ? 
-    `https://api.reddit.com/r/${arg.filterMethod ? `${arg.subreddit}/${arg.filterMethod}` : arg.subreddit}.json?raw_json=true&limit=30&after=${arg.after}`
-    : `https://api.reddit.com/r/${arg.filterMethod ? `all/${arg.filterMethod}` : 'all'}.json?raw_json=true&limit=30&after=${arg.after}`;
+    `https://api.reddit.com/r/${arg.filterMethod ? `${arg.subreddit}/${arg.filterMethod}` : arg.subreddit}.json?raw_json=true&limit=30${arg.topOfFilter ? `&t=${arg.topOfFilter}` : ''}&after=${arg.after}`
+    : `https://api.reddit.com/r/${arg.filterMethod ? `all/${arg.filterMethod}` : 'all'}.json?raw_json=true&limit=30${arg.topOfFilter ? `&t=${arg.topOfFilter}` : ''}&after=${arg.after}`;
     console.log(`Loading more ${url}`);
     const response = await fetch(url);
     const json = await response.json();

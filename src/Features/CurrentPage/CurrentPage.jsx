@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Outlet, useParams } from 'react-router-dom';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Posts from '../../Components/Posts/Posts';
 import Spinner from '../../Components/Spinner/Spinner';
@@ -38,10 +38,19 @@ export default function CurrentPage() {
   const nightMode = useSelector(selectNightmode);
   const subredditData = useSelector(selectSubredditData);
 
+  const location = useLocation();
+  const search = location.search;
+  const params = new URLSearchParams(search);
+  const topOfFilter = params.get('t');
+
   const { subreddit, filterMethod } = useParams();
 
   const loadMoreDataFromApi = () => {
+    if(topOfFilter) {
+      dispatch(loadMoreData({subreddit: subreddit, after: after, filterMethod, topOfFilter}));
+    } else {
     dispatch(loadMoreData({subreddit: subreddit, after: after, filterMethod}));
+  }
   }
 
   return (

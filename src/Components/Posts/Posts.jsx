@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, Navigate } from 'react-router-dom';
+import { useParams, Navigate, useLocation } from 'react-router-dom';
 import Post from '../../Components/Posts/Post/Post';
 import Loading from './Loading/Loading';
 import NoPostsError from './NoPostsError/NoPostsError';
@@ -35,9 +35,14 @@ export default function Posts() {
   const subredditData = useSelector(selectSubredditData);
   const currentPage = useSelector(selectCurrentPage);
   const filterMethodState = useSelector(selectCurrentFilterMethod);
-  const topOfFilter = useSelector(selectCurrentTopOfFilter);
+  //const topOfFilter = useSelector(selectCurrentTopOfFilter);
   const isFromSite = useSelector(selectIsFromSite);
   const dispatch = useDispatch();
+
+  const location = useLocation();
+  const search = location.search;
+  const params = new URLSearchParams(search);
+  const topOfFilter = params.get('t');
 
   const { subreddit, filterMethod, postId } = useParams();
   //Rename makes code easier to read
