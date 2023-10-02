@@ -1,0 +1,29 @@
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 6rem;
+  height: 80px;
+  width: 100%;
+  filter: drop-shadow(0 -10px 15px rgba(0,0,0,0.15));
+}
+
+footer.light {
+  background: white;
+}
+
+footer.dark {
+  background: rgb(50,50,50)
+}
+
+footer h6 {
+  font-size: 1rem;
+}
+
+footer.light h6 {
+  color: rgba(0,0,0,0.2);
+}
+
+footer.dark h6 {
+  color: rgba(240,240,240,0.8)
+}

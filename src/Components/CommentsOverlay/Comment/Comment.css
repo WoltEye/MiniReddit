@@ -1,0 +1,86 @@
+.comment * {
+  transition: all 250ms;
+}
+
+.comment-content-container h2 {
+  font-size: .8rem;
+  font-weight: normal;
+}
+
+.comment.dark a {
+  color: #4894f7;
+}
+
+.comment-dot {
+  font-size: .8rem;
+}
+
+.comment.light .comment-dot {
+  color: #323232;
+}
+
+.comment.dark .comment-dot {
+  color: whitesmoke;
+}
+
+.comment-created-ago {
+  font-size: .8rem;
+}
+
+.comment.light .comment-created-ago {
+  color: #323232; 
+}
+
+.comment.dark .comment-created-ago {
+  color: whitesmoke; 
+}
+
+.comment-content-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-author:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.comment-header {
+  display: flex;
+  gap: .4rem;
+}
+
+.comment-body {
+  margin-top: .4rem
+}
+
+/* Markdown styling */
+
+.comment-body h1 {
+  font-size: 1.65rem;
+  margin: 1rem 0;
+  font-weight: normal;
+}
+
+.comment-body h2 {
+    font-size: 1.4rem;
+    margin: 1rem 0;
+    font-weight: normal;
+  }
+
+  .comment-body h3 {
+    font-size: 1.25rem;
+    margin: 1rem 0;
+    font-weight: normal;
+  }
+
+  .comment-body ::marker {
+    display: inline;
+  }
+
+
+/* Markdown styling */
+
+.comment-body ul, .comment-body ol {
+  list-style-position: inside;
+}

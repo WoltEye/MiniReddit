@@ -1,0 +1,53 @@
+.posts {
+  width: 80rem;
+  margin: 0 auto;
+  position: relative;
+}
+
+.load-more {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 5px;
+  margin: 2rem auto;
+  display: block;
+  font-weight: bold;
+  transition: all 250ms;
+}
+
+.load-more.light {
+  color: whitesmoke;
+  background: #2f80cc;
+}
+
+.load-more.dark {
+  color: whitesmoke;
+  background: rgb(50,50,50);
+  box-shadow: inset 5px 5px 10px rgba(0,0,0,.5);
+  box-shadow: 1px 1px 15px rgba(99,169,235, 0);
+}
+
+.load-more:hover {
+  cursor: pointer;
+}
+
+
+.load-more.light:hover {
+  background: #63a9eb;
+}
+
+.load-more.dark:hover {
+  cursor: pointer;
+  background: rgb(70,70,70);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+.load-more:active {
+  background: #025aad;
+  color: #adadad;
+}
+
+@media only screen and (max-width: 1285px) {
+  .posts {
+    width: 95%;
+  }
+}

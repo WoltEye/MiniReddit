@@ -1,0 +1,97 @@
+.notification-bg {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  top: 60px;
+  background: rgba(0,0,0,0.8);
+  z-index: 2;
+}
+
+.notification {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  height: 12rem;
+  border-radius: 5px;
+  animation: on-load 300ms linear
+}
+
+.notification.light {
+  background: rgb(248,248,248);
+}
+
+.notification.dark {
+  background: rgb(40,40,40);
+  color: whitesmoke;
+  border: 1px solid rgba(255,255,255,0.3) 
+}
+
+.notification.dark a {
+  color:#4874f7;
+}
+
+.notification-content-container {
+  padding: 1.5rem 1.3rem;
+}
+
+.notification-content-container * {
+    text-align: center;
+}
+
+.notification-content-container h1 {
+    margin-bottom: .5rem;
+}
+
+.notification a {
+  text-decoration: none;
+}
+
+.notification a:hover {
+  text-decoration: underline;
+}
+
+.notification-content-container button {
+  margin: .6rem auto 0;
+  display: block;
+  width: 8rem;
+  height: 3rem;
+  color: whitesmoke;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  transition: 250ms all;
+}
+
+.notification.light .notification-content-container button {
+  background: #4874f7;
+}
+
+.notification.dark .notification-content-container button {
+  background: rgb(70,70,70);
+}
+
+.notification.light .notification-content-container button:hover {
+  cursor: pointer;
+  background: #7a9afa;
+}
+
+
+.notification.dark .notification-content-container button:hover {
+  cursor: pointer;
+  background: rgb(20,20,20);
+}
+
+@keyframes on-load{
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,57 @@
+.nightmode-switch * {
+  transition: 250ms all;
+}
+
+.nightmode-switch {
+  border: 1px solid rgba(0,0,0,.3);
+  height: 2.8rem;
+  width: 5.8rem;
+  transition: 250ms all;
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 25px;
+  box-shadow: inset 5px 5px 5px rgba(0,0,0,0.3);
+}
+
+.nightmode-switch:hover {
+  cursor: pointer;
+}
+
+.nightmode-switch.dark {
+  background: #5c5c5c;
+}
+
+.nightmode-switch.light {
+    background: rgba(247, 186, 2, .6);
+  }
+
+.nightmode-switch-ball {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+}
+
+.nightmode-switch-ball.light {
+    background: rgb(247, 186, 2);
+    box-shadow: 2px 2px 5px rgba(0,0,0,.3);
+    border: 1px solid rgba(0,0,0,.4);
+  }
+
+.nightmode-switch-ball.dark {
+  background: #9c9c9c;
+  box-shadow: -5px -1px 5px rgba(0,0,0,.5);
+  border: 1px solid rgba(255,255,255,0.4);
+}
+
+.nightmode-switch-ball.dark {
+  transform: translateX(127%);
+}
+
+.nightmode-switch-ball.light {
+  transform: translateX(5%);
+}

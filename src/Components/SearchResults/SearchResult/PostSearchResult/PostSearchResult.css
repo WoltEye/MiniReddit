@@ -1,0 +1,119 @@
+.search-result {
+    transition: 250ms all;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid transparent;
+  }
+  
+  .search-result:hover {
+    cursor: pointer;
+  }
+  
+  .search-result.light:hover {
+    border: 1px solid rgba(0,0,0, .2);
+  }
+  
+  .search-result.dark:hover {
+    border: 1px solid whitesmoke;
+  }
+  
+  .search-result.light {
+      background: white;
+    }
+    
+    .search-result.dark {
+      background: rgb(40,40,40);
+    }
+    
+    .search-result * {
+      transition: 250ms all;
+    }
+    
+    .search-result-container {
+      padding: .6rem;
+      position: relative;
+    }
+  
+  /* ?type=link */
+  
+  .search-result-post-additional-info {
+    display: flex;
+    flex-direction: row;
+    gap: .4rem;
+    font-size: .9rem;
+  }
+  
+  .search-result.light.link .search-result-post-additional-info {
+      color: black;
+  }
+  
+  .search-result.dark.link .search-result-post-additional-info {
+    color: rgba(255,255,255, .5);
+  }
+  
+  .search-result.light.link .search-result-post-additional-info a{
+    color: black;
+  }
+    
+  .search-result.dark.link .search-result-post-additional-info a {
+    color: rgba(255,255,255, .5);
+  }
+  
+  .search-result-post-additional-info a {
+    text-decoration: none;
+  }
+  
+  .search-result-post-additional-info a:hover {
+    text-decoration: underline;
+  }
+  
+  .search-result-body.link {
+    margin-top: .2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .search-result-thumbnail-container.link {
+    width: 9rem;
+    height: 6rem;
+    overflow: hidden;
+  }
+  
+  .search-result-thumbnail.link {
+    object-fit: cover;
+    min-width: 9rem;
+    min-height: 6rem;
+    border-radius: 5px;
+  }
+  
+  .search-result-footer.link {
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+    font-size: .8rem;
+  }
+  
+  .search-result.light.link .search-result-footer.link {
+      color: black;
+    }
+  
+  .search-result.dark.link .search-result-footer.link {
+    color: rgba(255,255,255, .5);
+  }
+  
+  .search-result-post-title {
+    font-size: 1.2rem;
+    width: 25rem;
+    margin-bottom: .5rem;
+  }
+  
+  .search-result.light.link .search-result-post-title {
+    color: black,
+  }
+  
+  .search-result.dark.link .search-result-post-title {
+    color: whitesmoke;
+  }
+  
+  /* ?type=link */

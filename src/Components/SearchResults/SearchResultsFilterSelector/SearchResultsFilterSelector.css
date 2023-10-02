@@ -1,0 +1,249 @@
+.search-results-filter-selector {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  border: 1px solid red;
+  width: 40rem;
+  margin: 1rem auto;
+  transition: 400ms all;
+  position: relative;
+}
+
+.search-results-filter-selector a {
+  text-decoration: none;
+}
+
+.search-results-filter-selector * {
+  transition: 400ms all;
+}
+
+.search-results-filter-selector.light button {
+  color: black;
+}
+
+.search-results-filter-selector.dark button {
+  color: whitesmoke;
+}
+.search-results-filter-selector ul {
+  list-style-type: none;
+  overflow: hidden;
+  position: absolute;
+  z-index: 1;
+}
+
+.search-results-filter-selector ul.popularity-filter { 
+  top: 1.3rem;
+  left: -0.2rem;
+}
+
+.search-results-filter-selector ul.time-filter { 
+  top: 1.3rem;
+}
+
+.search-results-filter-selector.light ul li {
+  border-bottom: 1px solid rgba(0, 0, 0, .4);
+  border-left: 1px solid rgba(0, 0, 0, .4);
+  border-right: 1px solid rgba(0, 0, 0, .4);
+}
+
+.search-results-filter-selector.dark ul li {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.search-results-filter-selector.light ul li.sr-one {
+  border-top: 1px solid rgba(0, 0, 0, .4);
+}
+
+.search-results-filter-selector.dark ul li.sr-one {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+.search-results-filter-selector ul li.sr-one {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.search-results-filter-selector ul.popularity-filter li.sr-five {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+
+  .search-results-filter-selector ul.time-filter li.sr-six {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+
+/* Useless animation testing start */
+
+.search-results-filter-selector ul.popularity-filter.active li.sr-one {
+  animation: useless-animation 250ms ease-in-out 1 normal forwards;
+}
+
+.search-results-filter-selector ul.popularity-filter.active li.sr-two {
+  animation: useless-animation 280ms ease-in-out 1 normal forwards;
+}
+
+.search-results-filter-selector ul.popularity-filter.active li.sr-three {
+  animation: useless-animation 300ms ease-in-out 1 normal forwards;
+}
+
+.search-results-filter-selector ul.popularity-filter.active li.sr-four {
+  animation: useless-animation 320ms ease-in-out 1 normal forwards;
+}
+
+.search-results-filter-selector ul.popularity-filter.active li.sr-five {
+  animation: useless-animation 340ms ease-in-out 1 normal forwards;
+}
+
+.search-results-filter-selector ul.popularity-filter.inactive li.sr-one {
+  animation: useless-animation2 250ms ease-in-out 1 normal forwards;
+}
+
+.search-results-filter-selector ul.popularity-filter.inactive li.sr-two {
+  animation: useless-animation2 280ms ease-in-out 1 normal forwards;
+}
+
+.search-results-filter-selector ul.popularity-filter.inactive li.sr-three {
+  animation: useless-animation2 300ms ease-in-out 1 normal forwards;
+}
+
+.search-results-filter-selector ul.popularity-filter.inactive li.sr-four {
+  animation: useless-animation2 320ms ease-in-out 1 normal forwards;
+}
+
+.search-results-filter-selector ul.popularity-filter.inactive li.sr-five {
+  animation: useless-animation2 340ms ease-in-out 1 normal forwards;
+}
+
+.search-results-filter-selector ul.time-filter.active li.sr-one {
+  animation: useless-animation-reverse 250ms ease-in-out 1 normal forwards;
+}
+
+.search-results-filter-selector ul.time-filter.active li.sr-two {
+  animation: useless-animation 280ms ease-in-out 1 normal forwards;
+}
+
+.search-results-filter-selector ul.time-filter.active li.sr-three {
+  animation: useless-animation-reverse 300ms ease-in-out 1 normal forwards;
+}
+
+.search-results-filter-selector ul.time-filter.active li.sr-four {
+  animation: useless-animation-reverse 320ms ease-in-out 1 normal forwards;
+}
+
+.search-results-filter-selector ul.time-filter.active li.sr-five {
+  animation: useless-animation-reverse 340ms ease-in-out 1 normal forwards;
+}
+
+.search-results-filter-selector ul.time-filter.active li.sr-six {
+  animation: useless-animation-reverse 360ms ease-in-out 1 normal forwards;
+}
+
+.search-results-filter-selector ul.time-filter.inactive li.sr-one {
+  animation: useless-animation-reverse2 250ms ease-in-out 1 normal forwards;
+}
+
+.search-results-filter-selector ul.time-filter.inactive li.sr-two {
+  animation: useless-animation-reverse2 280ms ease-in-out 1 normal forwards;
+}
+
+.search-results-filter-selector ul.time-filter.inactive li.sr-three {
+  animation: useless-animation-reverse2 300ms ease-in-out 1 normal forwards;
+}
+
+.search-results-filter-selector ul.time-filter.inactive li.sr-four {
+  animation: useless-animation-reverse2 320ms ease-in-out 1 normal forwards;
+}
+
+.search-results-filter-selector ul.time-filter.inactive li.sr-five {
+  animation: useless-animation-reverse2 340ms ease-in-out 1 normal forwards;
+} 
+
+.search-results-filter-selector ul.time-filter.inactive li.sr-six {
+  animation: useless-animation-reverse2 360ms ease-in-out 1 normal forwards;
+} 
+
+@keyframes useless-animation {
+  from { 
+    transform: translateX(-8rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 100;
+  }
+}
+
+@keyframes useless-animation2 {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-8rem);
+    opacity: 0;
+  }
+}
+
+@keyframes useless-animation-reverse {
+  from {
+    transform: translateX(8rem);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes useless-animation-reverse {
+  from {
+    transform: translate(0);
+  }
+  to {
+    transform: translateX(8rem);
+  }
+}
+
+/* Useless animation testing end */
+
+.search-results-filter-selector.light ul li {
+  color: black;
+  background: white;
+}
+
+.search-results-filter-selector.dark ul li {
+  color: whitesmoke;
+  background: rgb(40,40,40);
+}
+
+.search-results-filter-selector ul a:hover {
+  cursor: pointer;
+}
+
+.search-results-filter-selector.light ul a:hover li {
+  background: rgb(190,190,190);
+}
+
+.search-results-filter-selector.dark ul a li:hover {
+  background: rgb(90,90,90);
+}
+
+.search-results-filter-selector ul li {
+  padding: .5rem .3rem;
+  width: 100%;
+  display: block;
+}
+
+.search-results-filter-selector button {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: .3rem;
+}
+
+.search-results-filter-selector button:hover {
+  cursor: pointer;
+}

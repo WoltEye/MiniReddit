@@ -1,0 +1,11 @@
+.search-svg g path {
+  transition: 200ms all;
+}
+
+.search-svg.focused.light g path, .search-svg.hovered.light g path {
+  stroke: #000000;
+}
+
+.search-svg.focused.dark g path, .search-svg.hovered.dark g path {
+  stroke: #fff;
+}

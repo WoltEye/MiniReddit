@@ -1,0 +1,43 @@
+.no-posts-error {
+  width: 85%;
+  margin: 5rem auto;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30rem;
+  font-weight: bold;
+}
+
+.no-posts-error h2 {
+  font-size: 5rem;
+}
+
+.no-posts-error p  {
+  font-size: 2rem;
+}
+
+.no-posts-error.light {
+  background: white;
+}
+
+.no-posts-error.dark {
+  background: rgb(40,40,40);
+}
+
+.no-posts-error.light {
+  color: black;
+}
+
+.no-posts-error.dark {
+  color: whitesmoke;
+}
+
+
+.no-posts-error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: .4;
+}

@@ -1,0 +1,36 @@
+#fetch-error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+}
+
+#fetch-error-container * {
+  color: red;    
+}
+
+#fetch-error-container h1 {
+    font-size: 5rem;
+  }
+
+#fetch-error-container p {
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+#fetch-error-container button {
+  color: white;
+  width: 10rem;
+  height: 3rem;
+  margin-top: 1rem;
+  background: red;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+#fetch-error-container p.error-stack {
+  font-size: .8rem;
+}

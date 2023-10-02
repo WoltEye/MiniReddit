@@ -1,0 +1,123 @@
+.user-feed {
+  margin-top: 1.75rem;
+}
+
+.user-feed-load-more {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 5px;
+    margin: 2rem auto;
+    display: block;
+    font-weight: bold;
+    transition: all 250ms;
+  }
+  
+  .user-feed-load-more.light {
+    color: whitesmoke;
+    background: #2f80cc;
+  }
+  
+  .user-feed-load-more.dark {
+    color: whitesmoke;
+    background: rgb(50,50,50);
+    box-shadow: inset 5px 5px 10px rgba(0,0,0,.5);
+    box-shadow: 1px 1px 15px rgba(99,169,235, 0);
+  }
+  
+  .user-feed-load-more:hover {
+    cursor: pointer;
+  }
+  
+  
+  .user-feed-load-more.light:hover {
+    background: #63a9eb;
+  }
+  
+  .user-feed-load-more.dark:hover {
+    cursor: pointer;
+    background: rgb(70,70,70);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  }
+  
+  .user-feed-load-more:active {
+    background: #025aad;
+    color: #adadad;
+  }
+
+  .user-feed-no-posts-error {
+    width: 40rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 40rem;
+    border-radius: 5px;
+  }
+
+  .user-feed-no-posts-error {
+    opacity: .7;
+  }
+
+  .user-feed-no-posts-error .user-feed-no-posts-header {
+    font-size: 5rem;
+    opacity: .7;
+  }
+
+  .user-feed .user-feed-no-posts-paragrapgh { 
+    font-size: 2rem;
+    opacity: .7;
+  }
+
+  .user-feed.light .user-feed-no-posts-error {
+    background-color: white;
+    border: 1px solid rgba(0,0,0,.3);
+  }
+
+  .user-feed.dark .user-feed-no-posts-error {
+    background-color: rgb(40,40,40);
+    border: 1px solid rgba(255,255,255,.3)
+  }
+
+  .user-feed.light .user-feed-no-posts-error {
+    color: black;
+  }
+
+  .user-feed.dark .user-feed-no-posts-error {
+    color: whitesmoke;
+  }
+
+  .user-feed-error {
+    width: 35rem;
+    height: 30rem;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 5px;
+    gap: 1rem;
+    font-weight: bold;
+  }
+
+  .user-feed-error h2 {
+    font-size: 5rem;
+    text-align: center;
+  }
+
+  .user-feed-error p {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .user-feed.light .user-feed-error {
+    background: white;
+    border: 1px solid rgba(0,0,0,.4);;
+    color: rgba(0,0,0,.5);
+  }
+
+  .user-feed.dark .user-feed-error {
+    background: rgb(40,40,40);
+    border: 1px solid rgba(255, 255, 255, .3);;
+    color: rgba(255, 255, 255, .5);
+  }

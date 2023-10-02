@@ -1,0 +1,61 @@
+nav.main-nav * {
+  transition: 300ms all;
+}
+
+nav.main-nav {
+  height: 60px;
+  filter: drop-shadow(0px 5px 15px rgba(0,0,0,0.15));
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 3;
+  overflow: visible;
+  transition: 300ms all;
+}
+
+nav.main-nav.light {
+  background: white;
+}
+
+nav.main-nav.dark {
+  background: #1a1919;
+}
+
+nav.main-nav.light h1 {
+  color: black;
+}
+
+nav.main-nav.dark h1 {
+  color: whitesmoke;
+}
+
+.main-nav-flex-container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-logo {
+  height: 5rem;
+}
+
+.nav-logo:hover {
+  cursor: pointer;
+}
+
+.main-nav-bar-content-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: .5rem;
+  pointer-events: none;
+  user-select: none;
+}
+
+.main-nav-bar-user-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+}

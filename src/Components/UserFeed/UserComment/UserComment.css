@@ -1,0 +1,122 @@
+.user-comment {
+  margin: 1rem auto;
+  max-width: 50rem;
+  border-radius: 5px;
+  transition: 250ms all;
+}
+
+.user-comment:hover {
+  cursor: pointer;
+}
+
+.user-comment * {
+  transition: 250ms all;
+}
+
+.user-comment.light {
+  color: black;
+  background: rgb(255,255,255);
+  border: 1px solid rgba(0, 0, 0, .2);
+}
+
+.user-comment.light:hover {
+  border: 1px solid rgba(0, 0, 0, .5);
+}
+
+.user-comment.dark {
+  color: whitesmoke;
+  background: rgb(40,40,40);
+  border: 1px solid rgba(255, 255, 255, .2)
+}
+
+.user-comment.dark:hover {
+  border: 1px solid rgba(255, 255, 255, .5);
+}
+
+.user-comment-content-container {
+  padding: .5rem;
+}
+
+.user-comment-text-container {
+  display: flex;
+  flex-direction: row;
+  gap: .3rem;
+  flex-wrap: nowrap;
+  align-items: center;
+  white-space: nowrap;
+  font-size: .8rem;
+  margin-left: .3rem;
+}
+
+.user-comment.light .user-comment-commented-on {
+  color: rgba(0, 0, 0, .5)
+}
+
+.user-comment.dark .user-comment-commented-on {
+    color: rgb(180, 180, 180)
+  }
+  
+.user-comment hr {
+  width: 95%;
+  margin: .3rem auto;
+}
+
+.user-comment-body {
+  margin: .3rem 0 0 1rem;
+  width: 95%;
+  border-radius: 5px;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+.user-comment.light .user-comment-body {
+  background: rgb(230, 230, 230);
+}
+
+
+.user-comment.dark .user-comment-body {
+  background: rgb(70, 70, 70);
+ }
+
+.user-comment.dark .user-comment-body a {
+  color: #4894f7;
+}
+
+.user-comment-body-text-container {
+  display: flex;
+  flex-direction: row;
+  gap: .3rem;
+  font-size: .9rem;
+  overflow: hidden;
+}
+
+.user-comment.light .user-comment-body-text-container {
+  color: rgba(100,100,100);
+}
+
+.user-comment.dark .user-comment-body-text-container {
+    color: rgba(180,180,180);
+  }
+
+.user-comment.light .user-comment-author {
+  color: black;
+}
+
+.user-comment.dark .user-comment-author {
+    color: whitesmoke;
+  }
+
+.user-comment-body-content-container {
+  display: flex;
+  flex-direction: column;
+  padding: .5rem;
+  overflow: hidden;
+}
+
+.user-comment-subreddit:hover {
+  text-decoration: underline;
+}
+
+.user-commment-link-author:hover {
+  text-decoration: underline;
+}

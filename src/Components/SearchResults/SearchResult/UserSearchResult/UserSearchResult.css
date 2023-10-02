@@ -1,0 +1,87 @@
+.user-search-result-content-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  padding: .4rem;
+}
+
+.user-search-result {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+}
+
+.user-search-result.light {
+    color: black
+  }
+
+.user-search-result.dark {
+  color: whitesmoke
+}
+
+.user-search-result p {
+  font-size: .9em;
+  font-weight: bold;
+}
+
+ p.user-search-result-dot {
+  font-size: .7rem;
+}
+
+.user-search-result-text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.user-search-result-content-container p.user-search-result-description {
+  font-weight: 400;
+}
+
+.user-search-result.light .user-search-result-content-container p.user-search-result-description {
+  color: black;        
+}
+
+.user-search-result.dark .user-search-result-content-container p.user-search-result-description {
+    color: whitesmoke;        
+  }
+
+.user-serach-result-text-content-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: .5rem;
+}
+
+.user-search-result-icon-container {
+  min-width: 3rem;
+  min-height: 3rem;
+  overflow: hidden;
+}
+
+.user-search-result-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+
+.user-search-result.light .user-search-result-icon  {
+    border: 1px solid rgba(0,0,0, 0.5);
+}
+
+.user-search-result.dark .user-search-result-icon  {
+    border: 1px solid rgba(255,255,255, .5);
+}
+
+p.user-search-result-karma {
+  font-weight: normal;
+}
+
+.user-search-result.light p.user-search-result-karma {
+    color: rgba(0, 0, 0, .5);
+  }
+
+.user-search-result.dark p.user-search-result-karma {
+  color: rgba(255, 255, 255, .5);
+}
