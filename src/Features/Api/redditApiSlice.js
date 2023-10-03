@@ -9,8 +9,6 @@ export const loadData = createAsyncThunk(
     const url = arg.subreddit === undefined ? 
     'https://api.reddit.com/r/all/best.json?raw_json&limit=30' : 
     `https://api.reddit.com/r/${arg.filterMethod ? `${arg.subreddit}/${arg.filterMethod}` : arg.subreddit}.json?raw_json=true&limit=30${arg.topOfFilter ? `&t=${arg.topOfFilter}` : ''}`;  
-     console.log(url); 
-     console.log(arg); 
      const response = await fetch(url);
       const json = await response.json();
       return json;

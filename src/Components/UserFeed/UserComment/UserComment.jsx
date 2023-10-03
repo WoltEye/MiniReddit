@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { selectNightmode } from '../../../Features/CurrentPage/currentPageSlice';
-import { shortenLink, formatNumber, formatTime, fixRedditMarkdown, removeAmp } from '../../../utils/helperFunctions';
+import { shortenLink, reformatCommentUrl, formatNumber, formatTime, fixRedditMarkdown, removeAmp } from '../../../utils/helperFunctions';
 import './UserComment.css';
 import PostCommentsSVG from '../../../assets/PostCommentsSVG';
 import ReactMarkdown from 'react-markdown'
@@ -15,7 +15,7 @@ export default function UserComment({ data, showComments }) {
   const handleShowComments = e => {
     if(e.target.className !== 'user-comment-subreddit' &&
        e.target.className !== 'user-commment-link-author') {
-      showComments(data.permalink);
+      showComments(reformatCommentUrl(data.permalink));
     }
   }
 

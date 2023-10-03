@@ -12,7 +12,7 @@ export default function SubredditHeader({subredditData}) {
 
   return (
     <>
-    { !isLoading && !subredditIsLoading ?
+    { !subredditIsLoading ?
     <div className='subreddit-header'>
       <div className='subreddit-header-container'>
         { subredditData.banner_background_image ? 

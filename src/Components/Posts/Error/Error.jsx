@@ -7,6 +7,7 @@ import './Error.css';
 export default function Error() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const error = useSelector(selectError);
 
     const handleGoBack = () => {
       dispatch(clearEverything());
@@ -15,12 +16,9 @@ export default function Error() {
 
     return (
         <div id='fetch-error-container'>
-          <h1>Error</h1>
+          <h1>{ error.error }</h1>
           <p>
-            The application has encountered a error
-            please wait a couple of minutes before using 
-            the app again. Reddit's ratelimit has been
-            most likely reached.
+            { error.message }
           </p>
            <div className='error-button-container'>
              <button onClick={handleGoBack}>Go back</button>

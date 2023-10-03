@@ -48,7 +48,7 @@ export default function UserProfile() {
   }, [])
 
   useEffect(() => {
-    if(userData && userProfile) {
+    if(userData && userProfile && !isLoading) {
       if(!userFeedFilter) {
         dispatch(loadUserData({ username }));
       } else {

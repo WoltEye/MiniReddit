@@ -68,7 +68,7 @@ export default function Posts() {
       dispatch(changeCurrentPage('all'));
       dispatch(changeCurrentFilterMethod('best'));
     }
-    if(subreddit && subreddit !== currentPage && !commentsOverlayOpen) {
+    if(subreddit && subreddit !== currentPage) {
       console.info('Subreddit specified in url')
       if(!/all/i.test(subreddit)) {
         dispatch(changeCurrentPage(subreddit.toLowerCase()));
@@ -88,7 +88,6 @@ export default function Posts() {
   }, [])
 
   useEffect(() => {
-    if(data) {
     if(subreddit?.toLowerCase() !== currentPage && !commentsOverlayOpen) {
       dispatch(changeCurrentPage(subreddit?.toLowerCase()));
       loadDataFromApi();
@@ -98,11 +97,10 @@ export default function Posts() {
         dispatch(clearSubredditData());
       }
     }
-    if (filterMethod !== filterMethodState && !commentsOverlayOpen) {
+    if (filterMethod !== filterMethodState) {
       dispatch(changeCurrentFilterMethod(filterMethod));
       loadDataFromApi();
     }
-   }
   }, [subreddit, filterMethod])
   
   useEffect(() => {

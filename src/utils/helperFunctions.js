@@ -159,3 +159,13 @@ export const getSearchFilterDisplayName = (filter) => {
       return filter;
   }
 }
+
+/* While browsing users comments the permalink has a unique id which only
+   returns the comment the user posted and not the other comments on that
+   post. This is not the behaviour I want. This function removes the unique
+   id so clicking on the users comments opens up the whole comment section*/
+export const reformatCommentUrl = (redditURL) => {
+const modifiedURL = redditURL.replace(/\/([^/]+)\/[^/]+\/$/, '/$1/');
+
+return modifiedURL;
+}
