@@ -9,7 +9,6 @@ import Spinner from '../../Components/Spinner/Spinner';
 import SearchResult from './SearchResult/SearchResult.jsx';
 import SearchResultsTypeSelector from './SearchResultsTypeSelector/SearchResultsTypeSelector';
 import SearchResultsFilterSelector from './SearchResultsFilterSelector/SearchResultsFilterSelector';
-import { capitalizeFirstLetter } from '../../utils/helperFunctions';
 
 export default function SearchResults() {
   const [ showComments, setShowComments ] = useState(false);
@@ -35,7 +34,11 @@ export default function SearchResults() {
   }
 
   const loadMoreSearchResultsFromApi = () => {
-    dispatch(loadMoreSearchResults({searchTerm: q, type: searchType, after: searchResults.data.after}));
+    if(timeSort) {
+      dispatch(loadMoreSearchResults({searchTerm: q, type: searchType, after: searchResults.data.after, timeSort, sort}));
+    } else { 
+      dispatch(loadMoreSearchResults({searchTerm: q, type: searchType, after: searchResults.data.after, sort}));
+    }
   }
 
   useEffect(() => {

@@ -113,6 +113,7 @@ export default function SearchResultsFilterSelector() {
         </Link>
       </ul>
       </div>
+      { searchSort !== 'new' && searchSort !== 'hot' &&
       <div className='search-results-filter-dropdown'>
       <button
       className='time'
@@ -153,6 +154,7 @@ export default function SearchResultsFilterSelector() {
         </Link>
       </ul>
       </div>
+      }
     </div>
   )
 }

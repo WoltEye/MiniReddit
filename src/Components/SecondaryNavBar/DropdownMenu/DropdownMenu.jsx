@@ -69,7 +69,7 @@ export default function DropdownMenu() {
         </p>
       <DropdownSVG />
     </div>
-    { showOptions &&
+    { showOptions && !isLoading &&
     <div className='top-of-dropdown-menu'>
      <div className='top-of-filter'>
        <Link to="?t=hour">Now</Link>

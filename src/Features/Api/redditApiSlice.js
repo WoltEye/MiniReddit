@@ -67,8 +67,9 @@ export const loadSearchResults = createAsyncThunk(
 export const loadMoreSearchResults = createAsyncThunk(
   'redditApi/loadMoreSearchResults',
   async (arg) => {
-    const url = `https://api.reddit.com/search?q=${arg.searchTerm}&type=${arg.type}&after=${arg.after}${arg.sort ? `&sort=${arg.sort}` : ''}${arg.timeSort ? `&t=${arg.timeSort}` : ''}&raw_json=true`;
+    const url = `https://api.reddit.com/search?q=${arg.searchTerm}&type=${arg.type}${arg.sort ? `&sort=${arg.sort}` : ''}${arg.timeSort ? `&t=${arg.timeSort}` : ''}&after=${arg.after}&raw_json=true`;
     console.info('Loading search results. URL: ' + url);
+    console.info('timeSort: ' + arg.timeSort);
     const res = await fetch(url);
     const json = await res.json();
     return json;
