@@ -10,6 +10,8 @@ const currentPageSlice = createSlice({
     currentSearchTimeSort: '',
     currentSearchType: 'link',
     currentUserFeedFilter: 'overview',
+    currentUserFeedPopularityFilter: 'new',
+    currentUserFeedTimeFilter: 'all',
     nightmode: true
   },
   reducers: {
@@ -34,8 +36,13 @@ const currentPageSlice = createSlice({
     changeCurrentUserFeedFilter: (state, action) => {
       state.currentUserFeedFilter = action.payload
     },
+    changeCurrentUserFeedPopularityFilter: (state, action) => {
+      state.currentUserFeedPopularityFilter = action.payload;
+    },
     resetUserFeedFilter: (state) => {
       state.currentUserFeedFilter = 'overview';
+      state.currentUserFeedPopularityFilter = 'new';
+      state.currentUserFeedTimeFilter = 'all';
     },
     resetSearchType: (state) => {
       state.currentSearchType = 'link';
@@ -49,6 +56,9 @@ const currentPageSlice = createSlice({
     resetSearchFilters: (state) => {
       state.currentSearchSort = '';
       state.currentSearchTimeSort = '';
+    },
+    changeCurrentUserFeedTimeFilter: (state, action) => {
+      state.currentUserFeedTimeFilter = action.payload;
     }
   }
 })
@@ -62,6 +72,8 @@ export const selectCurrentSearchType = state => state.currentPage.currentSearchT
 export const selectCurrentSearchSort = state => state.currentPage.currentSearchSort;
 export const selectCurrentUserFeedFilter = state => state.currentPage.currentUserFeedFilter;
 export const selectCurrentSearchTimeSort = state => state.currentPage.currentSearchTimeSort;
+export const selectCurrentUserFeedPopularityFilter = state => state.currentPage.currentUserFeedPopularityFilter;
+export const selectCurrentUserFeedTimeFilter = state => state.currentPage.currentUserFeedTimeFilter;
 
 export const { changeCurrentPage,
                changeCurrentFilterMethod,
@@ -74,6 +86,8 @@ export const { changeCurrentPage,
                resetUserFeedFilter,
                changeCurrentSearchSort,
                changeCurrentSearchTimeSort,
-               resetSearchFilters
+               changeCurrentUserFeedPopularityFilter,
+               resetSearchFilters,
+               changeCurrentUserFeedTimeFilter
                } = currentPageSlice.actions;
 export default currentPageSlice.reducer;

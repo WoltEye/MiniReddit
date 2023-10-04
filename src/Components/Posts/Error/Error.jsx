@@ -16,9 +16,11 @@ export default function Error() {
 
     return (
         <div id='fetch-error-container'>
-          <h1>{ error.error }</h1>
+          <h1>{ error?.error }</h1>
           <p>
-            { error.message }
+            { error?.error === 429 ? 
+            'Reddits ratelimit reached please wait two to five minutes before using the app again...'
+            : error?.message }
           </p>
            <div className='error-button-container'>
              <button onClick={handleGoBack}>Go back</button>

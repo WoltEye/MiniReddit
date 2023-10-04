@@ -1,0 +1,70 @@
+.user-feed-dropdown {
+  transition: 250ms all;
+  margin-left: 1rem;
+}
+
+.user-feed-dropdown * {
+  transition: 250ms all;
+}
+
+button.open-top-of-filter {
+  width: 5rem;
+  height: 2rem;
+  font-weight: bold;
+  outline: none;
+  border: none;
+  border-radius: 7px;
+  font-size: .9rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+button.open-top-of-filter:hover {
+  cursor: pointer;
+}
+
+.user-feed-dropdown.dark button.open-top-of-filter {
+  background: rgb(100, 100, 100);
+  color: whitesmoke;
+}
+
+.user-feed-dropdown.light button.open-top-of-filter {
+    background: rgb(230, 230, 230);
+    color: whitesmoke;
+  }
+
+.user-feed-dropdown .dropdown-options {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  max-height: 2rem;
+  border-radius: 5px;
+}
+
+.user-feed-dropdown .dropdown-options a {
+  text-decoration: none;
+}
+
+.user-feed-dropdown .dropdown-options a p {
+  padding: .5rem;
+  white-space: nowrap;
+}
+
+.user-feed-dropdown.dark .dropdown-options {
+  background: rgb(100, 100, 100);
+}
+
+.user-feed-dropdown.dark .dropdown-options a {
+  color: whitesmoke;
+}
+
+.user-feed-dropdown.dark .dropdown-options a:hover {
+    background: rgb(70,70,70);
+  }
+
+.user-feed-dropdown.light .dropdown-options a {
+  color: black;
+}

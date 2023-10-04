@@ -11,6 +11,7 @@ import NotificationOverlay from '../NotificationOverlay/NotificationOverlay';
 import SubredditHeader from '../SubredditHeader/SubredditHeader';
 import SubredditInfo from '../SubredditInfo/SubredditInfo';
 import { selectCurrentPage } from '../../Features/CurrentPage/currentPageSlice';
+import Alert from '../Alert/Alert';
 
 
 export default function Root() {
@@ -30,6 +31,17 @@ export default function Root() {
     <SubredditHeader subredditData={subredditData}/>
     }
     <NavBar />
+    {
+      !hasError && 
+      !isOnSearchPage && 
+      !subredditHasError &&
+      !isOnUserFeed
+      || !hasError &&
+      !subredditHasError && 
+      !isOnSearchPage &&
+      !isOnUserFeed ?
+     <Alert /> : <></>
+    }
     { !hasError && 
       !isOnSearchPage && 
       !subredditHasError &&

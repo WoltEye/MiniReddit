@@ -77,7 +77,7 @@ export const loadMoreSearchResults = createAsyncThunk(
 export const loadUserData = createAsyncThunk(
   'redditApi/loadUserData',
   async (arg) => {
-    const url = `https://api.reddit.com/user/${arg.username}${arg.filter ? `/${arg.filter}` : ''}/?raw_json=true`
+    const url = `https://api.reddit.com/user/${arg.username}${arg.filter ? `/${arg.filter}` : '/overview'}/${arg.sort ? `?sort=${arg.sort}` : ''}${arg.time ? `&t=${arg.time}` : ''}&raw_json=true`
     console.info('Loading user data: ' + url)
     const res = await fetch(url);
     const json = await res.json();
@@ -230,13 +230,13 @@ const redditApiSlice = createSlice({
         state.subredditData = action.payload;
       } else {
         state.subredditHasError = true;
-        state.subRedditError = action.payload;
+        state.error = action.payload;
       }
     })
     .addCase(loadSubredditData.rejected, (state, action) => {
       state.subredditIsLoading = false;
       state.subredditHasError = true;
-      state.subRedditError = action.error;
+      state.error = action.error;
     })
     .addCase(loadSearchResults.pending, (state) => {
       state.isLoading = true;
