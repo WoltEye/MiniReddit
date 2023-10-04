@@ -156,6 +156,9 @@ const redditApiSlice = createSlice({
     },
     clearUserData: state => {
       state.userData = {};
+    },
+    setHasError: (state, action) => {
+      state.hasError = action.payload;
     }
   },
   extraReducers: (builder) => {
@@ -343,6 +346,6 @@ export const selectUserData = state => state.redditApi.userData;
 export const selectUserProfile = state => state.redditApi.userProfile;
 export const selectNewUserPostsIsLoading = state => state.redditApi.newUserPostsIsLoading;
 
-export const { clearSubredditData, clearEverything, clearSearchResults, clearUserData } = redditApiSlice.actions;
+export const { clearSubredditData, setHasError, clearEverything, clearSearchResults, clearUserData } = redditApiSlice.actions;
 
 export default redditApiSlice.reducer;

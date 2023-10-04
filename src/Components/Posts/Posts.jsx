@@ -97,7 +97,7 @@ export default function Posts() {
         dispatch(clearSubredditData());
       }
     }
-    if (filterMethod !== filterMethodState) {
+    if (filterMethod !== filterMethodState && !commentsOverlayOpen) {
       dispatch(changeCurrentFilterMethod(filterMethod));
       loadDataFromApi();
     }
@@ -123,7 +123,7 @@ export default function Posts() {
     data.map((item, index) => <Post data={item.data} subredditData={subredditData} key={index}/>) : 
     data?.length < 1 ? 
     <NoPostsError /> :
-    <p style={{color: 'red'}}>Unexpected Error: Please report this issue <a href="#">here</a></p>} 
+    <p style={{color: 'red'}}>Unexpected Error: Try to refresh the page</p>} 
   </>
   )
 }

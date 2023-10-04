@@ -1,18 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { clearEverything, selectError, selectSubredditError } from '../../../Features/Api/redditApiSlice.js';
+import { clearEverything, selectError, setHasError, selectHasError, selectSubredditError } from '../../../Features/Api/redditApiSlice.js';
 import './Error.css';
 
 export default function Error() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const hasError = useSelector(selectHasError);
     const error = useSelector(selectError);
 
     const handleGoBack = () => {
       dispatch(clearEverything());
       navigate('/');
     }
+
+    useEffect(() =>  {
+      if(!hasError) {
+        dispatch(setHasError(true));
+      }
+      return () =>  {
+        dispatch(setHasError(false));
+      }
+    }, [])
 
     return (
         <div id='fetch-error-container'>
