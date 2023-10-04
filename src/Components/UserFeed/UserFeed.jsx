@@ -55,6 +55,10 @@ export default function UserProfile() {
     dispatch(clearSubredditData());
     dispatch(loadUserData({ username, filter: userFeedFilter, time, sort }));
     dispatch((changeCurrentPage('userFeed')));
+    /*setPageLoaded(true) prevents the other useEffect
+      from firing during the first page load and making
+      another fetch request (I know this is not optimal, its just
+      temporary fix for the issue)*/
     setPageLoaded(true);
     return () => {
       dispatch(clearEverything());
