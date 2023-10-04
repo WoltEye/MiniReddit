@@ -71,15 +71,6 @@ export default function SearchResults() {
     if(timeSort) {
       dispatch(changeCurrentSearchTimeSort(timeSort));
     }
-    /*if(sort && q && type && type === searchType && !timeSort) {
-      dispatch(changeCurrentSearchSort(sort));
-      dispatch(loadSearchResults({searchTerm: q, type: searchType, sort}))
-    }
-    if(sort && q && type === searchType && timeSort) {
-      dispatch(changeCurrentSearchSort(sort))
-      dispatch(changeCurrentSearchTimeSort(timeSort));
-      dispatch(loadSearchResults({searchTerm: q, type: searchType, sort, timeSort}))
-    }*/
   }, [searchType, q, sort, timeSort])
 
   return (
