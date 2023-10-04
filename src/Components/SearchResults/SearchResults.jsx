@@ -61,11 +61,17 @@ export default function SearchResults() {
     if(currentPage !== 'search') {
     dispatch(changeCurrentPage('search'));
     }
-    if(q && type && type === searchType && !sort && !timeSort) {;
-    dispatch(loadSearchResults({searchTerm: q, type: searchType}));
+    if(q && type && type === searchType) {;
+    dispatch(loadSearchResults({searchTerm: q, type: searchType, sort, timeSort}));
     dispatch(resetSearchFilters());
     }
-    if(sort && q && type && type === searchType && !timeSort) {
+    if(sort) {
+      dispatch(changeCurrentSearchSort(sort))
+    }
+    if(timeSort) {
+      dispatch(changeCurrentSearchTimeSort(timeSort));
+    }
+    /*if(sort && q && type && type === searchType && !timeSort) {
       dispatch(changeCurrentSearchSort(sort));
       dispatch(loadSearchResults({searchTerm: q, type: searchType, sort}))
     }
@@ -73,7 +79,7 @@ export default function SearchResults() {
       dispatch(changeCurrentSearchSort(sort))
       dispatch(changeCurrentSearchTimeSort(timeSort));
       dispatch(loadSearchResults({searchTerm: q, type: searchType, sort, timeSort}))
-    }
+    }*/
   }, [searchType, q, sort, timeSort])
 
   return (
