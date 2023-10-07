@@ -188,3 +188,9 @@ const modifiedURL = redditURL.replace(/\/([^/]+)\/[^/]+\/$/, '/$1/');
 
 return modifiedURL;
 }
+
+export const replaceRedditPreviewLinks = (inputString) => {
+  const regexPattern = /<a\s+[^>]*href="(https:\/\/preview\.redd\.it\/[^"]+)"[^>]*>(.*?)<\/a>/g;
+  const replacedString = inputString.replace(regexPattern, '<img src="$1" alt="$2">');
+  return replacedString;
+}

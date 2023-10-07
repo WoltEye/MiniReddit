@@ -2,6 +2,10 @@
   transition: all 250ms;
 }
 
+.comment {
+  padding: .4rem 1rem .4rem .4rem;
+}
+
 .comment-content-container h2 {
   font-size: .8rem;
   font-weight: normal;
@@ -78,7 +82,9 @@
     display: inline;
   }
 
-
+  .comment-body img {
+    max-width: 10rem;
+  }
 /* Markdown styling */
 
 .comment-body ul, .comment-body ol {

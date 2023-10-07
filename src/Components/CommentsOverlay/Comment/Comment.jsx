@@ -1,12 +1,12 @@
 import React from 'react';
-import ReactMarkdown from 'react-markdown'
+import { Interweave } from 'interweave';
 import { useNavigate } from 'react-router-dom';
-import { formatTime, fixRedditMarkdown } from '../../../utils/helperFunctions';
+import { formatTime, fixRedditMarkdown, replaceRedditPreviewLinks } from '../../../utils/helperFunctions';
 import './Comment.css';
 import { useSelector } from 'react-redux';
 import { selectNightmode } from '../../../Features/CurrentPage/currentPageSlice';
 
-export default function Comment({data}) {
+export default function Comment({data, type, margin}) {
   const nightMode = useSelector(selectNightmode);
   const navigate = useNavigate();
   return (
@@ -16,7 +16,7 @@ export default function Comment({data}) {
          has the author key that every comment has if 
          not render nothing */ }
     { data.author ?
-     <div className={nightMode ? 'comment dark' : 'comment light'}>
+     <div style={margin ? {margin: `1rem 0 1rem ${margin}`} : {}} className={nightMode ? 'comment dark' : 'comment light'}>
       <div className='comment-content-container'> 
         <div className='comment-header'>
         <h2 
@@ -30,12 +30,13 @@ export default function Comment({data}) {
         </div>
         <div className='comment-body'>
         { data.body !== '[removed]' ?
-        <ReactMarkdown children={fixRedditMarkdown(data.body)} />
+        <Interweave content={replaceRedditPreviewLinks(data.body_html)} />
         : <p style={{color: '#323232'}}>{data.body}</p>}
         </div>
       </div>
-    </div> 
+    </div>
     : <></>}
   </>
   )
 }
+//<ReactMarkdown children={fixRedditMarkdown(data.body)} />

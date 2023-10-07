@@ -43,7 +43,7 @@ export const loadSubredditData = createAsyncThunk(
 export const loadComments = createAsyncThunk(
   'redditApi/loadComments',
   async (arg) => {
-    const url = `https://api.reddit.com${arg}.json?raw_json=true`;
+    const url = `https://api.reddit.com${arg}.json?raw_json=1`;
     console.log('Loading Comments ' + url);
     const response = await fetch(url);
     const json = await response.json();
@@ -77,11 +77,11 @@ export const loadMoreSearchResults = createAsyncThunk(
 export const loadUserData = createAsyncThunk(
   'redditApi/loadUserData',
   async (arg) => {
-    const url = `https://api.reddit.com/user/${arg.username}${arg.filter ? `/${arg.filter}` : '/overview'}/${arg.sort ? `?sort=${arg.sort}` : ''}${arg.time ? `&t=${arg.time}` : ''}&raw_json=true`
+    const url = `https://api.reddit.com/user/${arg.username}${arg.filter ? `/${arg.filter}` : '/overview'}/${arg.sort ? `?sort=${arg.sort}` : ''}${arg.time ? `&t=${arg.time}` : ''}&raw_json=1`
     console.info('Loading user data: ' + url)
     const res = await fetch(url);
     const json = await res.json();
-    const url2 = `https://api.reddit.com/user/${arg.username}/about?raw_json=true`;
+    const url2 = `https://api.reddit.com/user/${arg.username}/about?raw_json=1`;
     const res2 = await fetch(url2);
     const json2 = await res2.json();
     return {json, json2};
@@ -91,7 +91,7 @@ export const loadUserData = createAsyncThunk(
 export const loadMoreUserPosts = createAsyncThunk(
   'redditApi/loadMoreUserPosts',
   async (arg) => {
-    const url = `https://api.reddit.com/user/${arg.username}${arg.filter ? `/${arg.filter}` : ''}?after=${arg.after}&raw_json=true`
+    const url = `https://api.reddit.com/user/${arg.username}${arg.filter ? `/${arg.filter}` : ''}?after=${arg.after}&raw_json=1`
     const res = await fetch(url);
     const json = await res.json();
     return json;

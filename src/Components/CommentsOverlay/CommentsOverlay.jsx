@@ -18,14 +18,23 @@ export default function CommentsOverlay({disableDefaultBehaviour, showComments})
   const { subreddit, postId, postName } = useParams();
   const fetchParams = `/r/${subreddit}/comments/${postId}/${postName}`;
 
-
-  //Used to render new comments untill the comment has no replies
-  const findReplyChain = comment => {
-    const replies = [];
-    for(const reply in comment.replies.children) {
+  const renderReplyChain = (chain, margin) => {
+    //Should not happen but if happens does not crash the app
+    if(chain === undefined) { 
+      return 'error';
     }
+    return chain.map((reply, index) => {
+      return (
+       <React.Fragment key={`reply${reply.data.id}`}>
+       <Comment data={reply.data} margin={!margin ? '20px' : '40px'} type='reply'/>
+      { reply.data.replies && renderReplyChain(reply.data.replies.data.children, '40px') }
+        </React.Fragment>
+       )
+    })
   }
 
+
+//<Comment type='reply' data={reply.data} />
   const handleClose = e => {
     /* Prevents onClick spreading to children */
     if(e.target.className === 'comments-overlay-bg' ||
@@ -72,8 +81,11 @@ export default function CommentsOverlay({disableDefaultBehaviour, showComments})
         <div className='comments-content-container'> 
         {
          commentsData && commentsData[1].data.children.length > 0 ? commentsData[1].data.children.map((comment, index) => {
-          return ( 
+          return (
+          <div className='comment-n-replies' key={comment.data.id}>
           <Comment data={comment.data} key={index}/>
+          { comment.data.replies ? renderReplyChain(comment.data.replies.data.children) : <></> }
+          </div>
           )
         })
         : commentsData && commentsData[1].data.children.length === 0 ?
