@@ -17,3 +17,21 @@
   gap: .8rem;
   text-align: center;
 }
+
+@media only screen and (max-width: 650px) {
+  .alert {
+    width: 30rem;
+  }
+}
+
+@media only screen and (max-width: 490px) {
+  .alert {
+    width: 25rem;
+  }
+}
+
+@media only screen and (max-width: 407px) {
+  .alert {
+    width: 20rem;
+  }
+}

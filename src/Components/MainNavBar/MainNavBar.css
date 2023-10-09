@@ -59,3 +59,31 @@ nav.main-nav.dark h1 {
   height: 2.5rem;
   border-radius: 50%;
 }
+
+@media only screen and (max-width: 1050px) {
+  .main-nav-flex-container {
+    gap: 1rem;
+  }
+}
+
+@media only screen and (max-width: 855px) {
+  .main-nav-flex-container {
+    justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .nav-logo {
+    height: 4rem;
+  }
+  .main-nav-flex-container {
+    gap: .2rem;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .nav-logo {
+    height: 3.5rem;
+  }
+}
+

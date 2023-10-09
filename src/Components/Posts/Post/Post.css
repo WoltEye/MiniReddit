@@ -6,6 +6,7 @@
   position: relative;
   z-index: 1;
   transition: 250ms all;
+  overflow: hidden;
 }
 
 .post * {
@@ -41,15 +42,18 @@
   display: flex;
   gap: .4rem;
   align-items: center;
+  white-space: nowrap;
+}
+
+.post .additional-info * {
+  font-size: 0.85rem;
 }
 
 .post.light .additional-info * {
-  font-size: 0.85rem;
   color: rgb(70,70,70);
 }
 
 .post.dark .additional-info * {
-  font-size: 0.85rem;
   color: rgb(190,190,190);
 }
 
@@ -285,3 +289,88 @@
 }
 
 /* Markdown Styling End */
+
+@media only screen and (max-width: 830px) {
+  .post {
+    width: 45rem;
+  }
+}
+
+@media only screen and (max-width: 740px) {
+  .post {
+    width: 40rem;
+  }
+}
+
+@media only screen and (max-width: 670px) {
+  .post {
+    width: 35rem;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .post {
+    width: 33rem;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .post {
+    width: 31rem;
+  }
+  .post-sidebar {
+    width: 3rem;
+  }
+  .post-sidebar p.score {
+    font-size: 1rem;
+  }
+  .post iframe {
+    width: 20rem;
+    height: 13rem;
+  }
+}
+
+@media only screen and (max-width: 515px) {
+  .post {
+    width: 29rem;
+  }
+}
+
+@media only screen and (max-width: 490px) {
+  .post {
+    width: 27rem;
+  }
+  .post iframe {
+    width: 17rem;
+    height: 11rem;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .post {
+    width: 25rem;
+    min-height: 8rem;
+  }
+}
+
+@media only screen and (max-width: 430px) {
+  .post {
+    width: 23rem;
+  }
+  .post .additional-info * {
+    font-size: .7rem;
+  }
+  .post iframe {
+    width: 15rem;
+    height: 9rem;
+  }
+}
+
+@media only screen and (max-width: 410px) {
+  .post {
+    width: 21rem;
+  }
+  .post .additional-info * {
+    font-size: .65rem;
+  }
+}

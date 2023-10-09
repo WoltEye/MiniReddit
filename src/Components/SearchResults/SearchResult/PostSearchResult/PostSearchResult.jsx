@@ -6,10 +6,8 @@ import './PostSearchResult.css';
 
 export default function PostSearchResult({ data, showComments, loadComments }) {
     const [ thumbnailHasError, setThumbnailHasError ] = useState(false);
-    const dispatch = useDispatch(); 
 
     const handleClick = e => {
-        console.log(e.target.className !== 'search-result-post-subreddit-link');
         if(e.target.className !== 'search-result-post-subreddit-link') {
         showComments(true);
         loadComments(data.permalink);
@@ -18,7 +16,6 @@ export default function PostSearchResult({ data, showComments, loadComments }) {
 
     const handleError = () => {
         setThumbnailHasError(true);
-        console.warn(fixRedditLink(data.thumbnail) + ' Has error cant load');
       }    
 
     

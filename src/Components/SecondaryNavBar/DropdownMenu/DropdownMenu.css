@@ -86,3 +86,100 @@
   .all-time {
     width: 100%;
   }
+
+  @media only screen and (max-width: 910px) {
+    .top-of-the .top-of-dropdown-menu {
+      width: 19rem;
+      height: 2rem;
+      overflow: hidden;
+    }
+    .top-of-dropdown-menu a {
+      font-size: .8rem;
+      white-space: nowrap;
+    }
+  }
+
+  @media only screen and (max-width: 855px) {
+    .top-of-the .top-of-dropdown-menu {
+      width: 17rem;
+      overflow: hidden;
+    }
+    .top-of-dropdown-menu a {
+      font-size: .7rem;
+    }
+  }
+
+  @media only screen and (max-width: 790px) {
+    .top-of-the .top-of-dropdown-menu {
+      left: -.5rem;
+    }
+  }
+
+  @media only screen and (max-width: 765px) {
+    .top-of-the .top-of-dropdown-menu {
+      left: -1rem;
+    }
+  }
+
+  @media only screen and (max-width: 750px) {
+    .top-of-the .top-of-dropdown-menu {
+      left: -2rem;
+    }
+  }
+
+  @media only screen and (max-width: 720px) {
+    .top-of-the .top-of-dropdown-menu {
+      left: -3rem;
+    }
+  }
+
+  @media only screen and (max-width: 690px) {
+    .top-of-the .top-of-dropdown-menu {
+      left: -4rem;
+    }
+  }
+
+  @media only screen and (max-width: 655px) {
+    .top-of-the .top-of-dropdown-menu {
+      left: -5rem;
+    }
+  }
+
+  @media only screen and (max-width: 630px) {
+    .top-of-the .top-of-dropdown-menu {
+      left: -6rem;
+    }
+  }
+
+
+  @media only screen and (max-width: 595px) {
+    .top-of-the .top-of-dropdown-menu {
+      left: -7rem;
+    }
+  }
+
+  @media only screen and (max-width: 560px) {
+    .top-of-the .top-of-dropdown-menu {
+      left: -8rem;
+    }
+  }
+
+  @media only screen and (max-width: 530px) {
+    .top-of-the .top-of-dropdown-menu {
+      left: -10rem;
+    }
+  }
+
+  @media only screen and (max-width: 470px) {
+    .top-of-the .top-of-dropdown-menu {
+      left: -11rem;
+      width: fit-content;
+    }
+    .all-time {
+      width: fit-content;
+    }
+    .top-of-the-content-container {
+      font-size: .8rem;
+      
+    }
+  }

@@ -117,3 +117,33 @@
 .search-results-filter-selector button:hover {
   cursor: pointer;
 }
+
+@media only screen and (max-width: 715px) {
+  .search-results-filter-selector {
+    width: 38rem;
+  }
+}
+
+@media only screen and (max-width: 635px) {
+  .search-results-filter-selector {
+    width: 34rem;
+  }
+}
+
+@media only screen and (max-width: 570px) {
+  .search-results-filter-selector {
+    width: 30rem;
+  }
+}
+
+@media only screen and (max-width: 500px) { 
+  .search-results-filter-selector {
+    width: 28rem;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .search-results-filter-selector {
+    width: 90%;
+  }
+}

@@ -48,7 +48,6 @@ export default function DropdownMenu() {
 
     useEffect(() => {
       if(t) {
-      console.log(t);
       dispatch(setTopOfFilter(validTopOf.toLowerCase()));
     }
     }, [validTopOf])

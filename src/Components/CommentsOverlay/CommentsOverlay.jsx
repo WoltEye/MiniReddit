@@ -1,22 +1,34 @@
-import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import Comment from './Comment/Comment.jsx';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectCurrentComments, loadComments } from '../../Features/Api/redditApiSlice.js';
+import { selectCurrentComments, loadComments, selectIsLoading, selectCommentsIsLoading } from '../../Features/Api/redditApiSlice.js';
 import { changeCurrentPage, selectIsFromSite, selectNightmode, toggleIsFromSite } from '../../Features/CurrentPage/currentPageSlice.js';
 import './CommentsOverlay.css';
 import Post from '../Posts/Post/Post.jsx';
 import NoCommentsSVG from '../../assets/NoCommentsSVG.jsx';
+import CommentOverlayFilterSelector from './CommentOverlayFilterSelector/CommentOverlayFilterSelector.jsx';
 
 export default function CommentsOverlay({disableDefaultBehaviour, showComments}) {
+  const [ filterChangeAmount, setFilterChangeAmount ] = useState(0);
+  /* Another quick fix to prevent useEffect from fetching multiple times when the page is intially loaded
+     could be done much cleaner and easier but would require days of refactoring the code. Maybe doing that some time... idk */
+  const [ initialPageLoadStatus, setInitialPageLoadStatus ] = useState(false);
+
   const navigate = useNavigate();
   const commentsData = useSelector(selectCurrentComments);
   const isFromSite = useSelector(selectIsFromSite);
   const nightMode = useSelector(selectNightmode);
+  const commentsIsLoading = useSelector(selectCommentsIsLoading);
   const dispatch = useDispatch();
   const { subreddit, postId, postName } = useParams();
   const fetchParams = `/r/${subreddit}/comments/${postId}/${postName}`;
+
+  const location = useLocation();
+  const search = location.search;
+  const params = new URLSearchParams(search);
+  const sort = params.get('sort');
 
   const renderReplyChain = (chain, margin) => {
     //Should not happen but if happens does not crash the app
@@ -39,7 +51,8 @@ export default function CommentsOverlay({disableDefaultBehaviour, showComments})
     /* Prevents onClick spreading to children */
     if(e.target.className === 'comments-overlay-bg' ||
        e.target.className === 'comments dark'       ||
-       e.target.className === 'comments light') {
+       e.target.className === 'comments light'      ||
+       e.target.className === 'close-button') {
     /* Prevents navigate(-1) going out of the page
        if the comments are opened using a button or
        a link from the website the site can use navigate(-1)
@@ -47,8 +60,16 @@ export default function CommentsOverlay({disableDefaultBehaviour, showComments})
        if the comment section was opened with a external
        link it uses .. to get back to the subreddit the
        post belongs to */
+    /*  filterChangeAmount tracks how many times the comment filter has been changed
+        so that the close button doesn't send the user back to the same comment page
+        again. Im completely aware how scuffed this current system is but remaking
+        it would take days or even weeks I think im ready to move to the next project :D  */
      if(isFromSite) {
+      if(filterChangeAmount === 0) {
       navigate(-1);
+      } else {
+        navigate(filterChangeAmount - 1);
+      }
       dispatch(toggleIsFromSite());
      } else if (disableDefaultBehaviour) {
        showComments(false);
@@ -60,11 +81,21 @@ export default function CommentsOverlay({disableDefaultBehaviour, showComments})
   
   useEffect(() => {
     if(!disableDefaultBehaviour) {
-    dispatch(loadComments(fetchParams));
+    dispatch(loadComments({ fetchParams, sort }));
     }
-    console.log(disableDefaultBehaviour);
-    console.log(postId);
+    setInitialPageLoadStatus(true);
+    return () => {
+      setFilterChangeAmount(0);
+      setInitialPageLoadStatus(false);
+    }
   }, []);
+
+  useEffect(() => {
+    if(commentsData && initialPageLoadStatus) {
+      dispatch(loadComments({fetchParams, sort}));
+      setFilterChangeAmount(prev => prev - 1);
+    }
+  }, [sort])
 
   return (
     <>
@@ -79,6 +110,9 @@ export default function CommentsOverlay({disableDefaultBehaviour, showComments})
        previewPage={true}/> }
       <div className='comments-container'>
         <div className='comments-content-container'> 
+        { !commentsIsLoading && !showComments &&
+          <CommentOverlayFilterSelector /> 
+        }
         {
          commentsData && commentsData[1].data.children.length > 0 ? commentsData[1].data.children.map((comment, index) => {
           return (

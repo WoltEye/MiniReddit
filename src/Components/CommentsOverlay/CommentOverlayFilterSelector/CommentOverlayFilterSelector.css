@@ -1,0 +1,70 @@
+.comment-overlay-filter-selector {
+  transition: 250ms all;
+}
+
+.comment-overlay-filter-selector * {
+    transition: 250ms all;
+  }
+
+.comment-overlay-filter-button {
+  background: transparent;
+  height: 1.2rem;
+  width: 6rem;
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: .2rem;
+  border: none;
+  position: relative;
+}
+
+.comment-overlay-filter-button:hover {
+  cursor: pointer;
+}
+
+.comment-overlay-filter-selector.light .comment-overlay-filter-button {
+    color: black;
+  }
+
+.comment-overlay-filter-selector.dark .comment-overlay-filter-button {
+  color: whitesmoke;
+}
+
+.comment-overlay-filter-selector.light ul li {
+  background: white;
+}
+
+.comment-overlay-filter-selector.dark ul li {
+  background: rgb(70, 70, 70);
+}
+
+.comment-overlay-filter-selector.dark ul li:hover {
+    background: rgb(120, 120, 120);
+  }
+
+.comment-overlay-filter-selector ul {
+  list-style: none;
+  width: 6rem;
+  position: absolute;
+}
+
+.comment-overlay-filter-selector ul li {
+  padding: .5rem .2rem;
+  text-align: center;
+  font-size: .8rem;
+  font-weight: bold;
+}
+
+.comment-overlay-filter-selector ul a {
+  text-decoration: none;
+}
+
+.comment-overlay-filter-selector.light ul a {
+    color: black;
+}
+
+.comment-overlay-filter-selector.dark ul a {
+    color: whitesmoke;
+}

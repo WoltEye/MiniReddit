@@ -68,3 +68,31 @@ button.open-top-of-filter:hover {
 .user-feed-dropdown.light .dropdown-options a {
   color: black;
 }
+
+@media only screen and (max-width: 1075px) {
+  .user-feed-dropdown .dropdown-options {
+    font-size: .9rem;
+  }
+  .user-feed-dropdown .dropdown-options a p {
+    padding: .4rem; 
+  }
+}
+
+@media only screen and (max-width: 965px) {
+  .user-feed-dropdown .dropdown-options {
+    font-size: .85rem;
+  }
+  .user-feed-dropdown .dropdown-options a p {
+    padding: .35rem; 
+  }
+}
+
+@media only screen and (max-width: 870px) {
+  .user-feed-dropdown .dropdown-options {
+    right: .9rem;
+    margin-top: .2rem;
+  }
+  .user-feed-dropdown .dropdown-options a p {
+    padding: .3rem; 
+  }
+}

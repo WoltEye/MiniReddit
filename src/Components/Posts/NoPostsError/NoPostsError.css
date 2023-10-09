@@ -11,10 +11,12 @@
 
 .no-posts-error h2 {
   font-size: 5rem;
+  text-align: center;
 }
 
 .no-posts-error p  {
   font-size: 2rem;
+  text-align: center;
 }
 
 .no-posts-error.light {

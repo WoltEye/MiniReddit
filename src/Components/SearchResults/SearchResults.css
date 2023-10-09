@@ -81,10 +81,12 @@
 
 .no-search-results h2 {
   font-size: 5rem;
+  text-align: center;
 }
 
 .no-search-results p {
   font-size: 1.75rem;
+  text-align: center;
 }
 
 .no-search-results.light {
@@ -102,5 +104,35 @@
  }
   to {
    background: black;
+  }
+}
+
+@media only screen and (max-width: 715px) {
+  .search-results {
+    width: 38rem;
+  }
+}
+
+@media only screen and (max-width: 635px) {
+  .search-results {
+    width: 34rem;
+  }
+}
+
+@media only screen and (max-width: 570px) {
+  .search-results {
+    width: 30rem;
+  }
+}
+
+@media only screen and (max-width: 500px) { 
+  .search-results {
+    width: 28rem;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .search-results {
+    width: 90%;
   }
 }

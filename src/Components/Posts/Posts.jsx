@@ -63,13 +63,11 @@ export default function Posts() {
   //On page load
   useEffect(() => {
     if(!subreddit && currentPage !== 'all') {
-      console.info('No subreddit specified in url loading /r/all/best');
       loadDataFromApi();
       dispatch(changeCurrentPage('all'));
       dispatch(changeCurrentFilterMethod('best'));
     }
     if(subreddit && subreddit !== currentPage) {
-      console.info('Subreddit specified in url')
       if(!/all/i.test(subreddit)) {
         dispatch(changeCurrentPage(subreddit.toLowerCase()));
         if(filterMethod) {

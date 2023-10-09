@@ -8,7 +8,7 @@ export const loadData = createAsyncThunk(
       load r/all/best as the default page */
     const url = arg.subreddit === undefined ? 
     'https://api.reddit.com/r/all/best.json?raw_json&limit=30' : 
-    `https://api.reddit.com/r/${arg.filterMethod ? `${arg.subreddit}/${arg.filterMethod}` : arg.subreddit}.json?raw_json=true&limit=30${arg.topOfFilter ? `&t=${arg.topOfFilter}` : ''}`;  
+    `https://api.reddit.com/r/${arg.filterMethod ? `${arg.subreddit}/${arg.filterMethod}` : arg.subreddit}.json?raw_json=1&limit=30${arg.topOfFilter ? `&t=${arg.topOfFilter}` : ''}`;  
      const response = await fetch(url);
       const json = await response.json();
       return json;
@@ -20,9 +20,8 @@ export const loadMoreData = createAsyncThunk(
   'redditApi/loadMoreData',
   async (arg) => {
     const url = arg.subreddit !== undefined ? 
-    `https://api.reddit.com/r/${arg.filterMethod ? `${arg.subreddit}/${arg.filterMethod}` : arg.subreddit}.json?raw_json=true&limit=30${arg.topOfFilter ? `&t=${arg.topOfFilter}` : ''}&after=${arg.after}`
+    `https://api.reddit.com/r/${arg.filterMethod ? `${arg.subreddit}/${arg.filterMethod}` : arg.subreddit}.json?raw_json=1&limit=30${arg.topOfFilter ? `&t=${arg.topOfFilter}` : ''}&after=${arg.after}`
     : `https://api.reddit.com/r/${arg.filterMethod ? `all/${arg.filterMethod}` : 'all'}.json?raw_json=true&limit=30${arg.topOfFilter ? `&t=${arg.topOfFilter}` : ''}&after=${arg.after}`;
-    console.log(`Loading more ${url}`);
     const response = await fetch(url);
     const json = await response.json();
     return json;     
@@ -32,7 +31,7 @@ export const loadMoreData = createAsyncThunk(
 export const loadSubredditData = createAsyncThunk(
   'redditApi/loadSubredditData',
   async (arg) => {
-    const url = `https://api.reddit.com/r/${arg.subreddit !== undefined ? arg.subreddit : 'all'}/about.json?raw_json=true`;
+    const url = `https://api.reddit.com/r/${arg.subreddit !== undefined ? arg.subreddit : 'all'}/about.json?raw_json=1`;
     const response = await fetch(url);
     const json = await response.json();
     return json;
@@ -43,8 +42,7 @@ export const loadSubredditData = createAsyncThunk(
 export const loadComments = createAsyncThunk(
   'redditApi/loadComments',
   async (arg) => {
-    const url = `https://api.reddit.com${arg}.json?raw_json=1`;
-    console.log('Loading Comments ' + url);
+    const url = `https://api.reddit.com${arg.fetchParams}?raw_json=1${arg.sort ? `&sort=${arg.sort}` : ''}`;
     const response = await fetch(url);
     const json = await response.json();
     return json;
@@ -54,8 +52,7 @@ export const loadComments = createAsyncThunk(
 export const loadSearchResults = createAsyncThunk(
   'redditApi/loadSearchResults',
   async (arg) => {
-    const url = `https://api.reddit.com/search?q=${arg.searchTerm}&type=${arg.type}${arg.sort ? `&sort=${arg.sort}` : ''}${arg.timeSort ? `&t=${arg.timeSort}` : ''}&raw_json=true`;
-    console.info('Loading search results. URL: ' + url);
+    const url = `https://api.reddit.com/search?q=${arg.searchTerm}&type=${arg.type}${arg.sort ? `&sort=${arg.sort}` : ''}${arg.timeSort ? `&t=${arg.timeSort}` : ''}&raw_json=1`;
     const res = await fetch(url);
     const json = await res.json();
     return json;
@@ -65,9 +62,7 @@ export const loadSearchResults = createAsyncThunk(
 export const loadMoreSearchResults = createAsyncThunk(
   'redditApi/loadMoreSearchResults',
   async (arg) => {
-    const url = `https://api.reddit.com/search?q=${arg.searchTerm}&type=${arg.type}${arg.sort ? `&sort=${arg.sort}` : ''}${arg.timeSort ? `&t=${arg.timeSort}` : ''}&after=${arg.after}&raw_json=true`;
-    console.info('Loading search results. URL: ' + url);
-    console.info('timeSort: ' + arg.timeSort);
+    const url = `https://api.reddit.com/search?q=${arg.searchTerm}&type=${arg.type}${arg.sort ? `&sort=${arg.sort}` : ''}${arg.timeSort ? `&t=${arg.timeSort}` : ''}&after=${arg.after}&raw_json=1`;
     const res = await fetch(url);
     const json = await res.json();
     return json;
@@ -77,8 +72,7 @@ export const loadMoreSearchResults = createAsyncThunk(
 export const loadUserData = createAsyncThunk(
   'redditApi/loadUserData',
   async (arg) => {
-    const url = `https://api.reddit.com/user/${arg.username}${arg.filter ? `/${arg.filter}` : '/overview'}/${arg.sort ? `?sort=${arg.sort}` : ''}${arg.time ? `&t=${arg.time}` : ''}&raw_json=1`
-    console.info('Loading user data: ' + url)
+    const url = `https://api.reddit.com/user/${arg.username}${arg.filter ? `/${arg.filter}` : '/overview'}/?raw_json=1${arg.sort ? `&sort=${arg.sort}` : ''}${arg.time ? `&t=${arg.time}` : ''}`
     const res = await fetch(url);
     const json = await res.json();
     const url2 = `https://api.reddit.com/user/${arg.username}/about?raw_json=1`;
@@ -345,6 +339,7 @@ export const selectNewSearchResultsIsLoading = state => state.redditApi.newSearc
 export const selectUserData = state => state.redditApi.userData;
 export const selectUserProfile = state => state.redditApi.userProfile;
 export const selectNewUserPostsIsLoading = state => state.redditApi.newUserPostsIsLoading;
+export const selectCommentsIsLoading = state => state.redditApi.commentsIsLoading;
 
 export const { clearSubredditData, setHasError, clearEverything, clearSearchResults, clearUserData } = redditApiSlice.actions;
 

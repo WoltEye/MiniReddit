@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ReactMarkdown from 'react-markdown'
+import { Interweave } from 'interweave';
 //Using ReactHlsPlayer because html video player doesn't support hls file format
 import ReactHlsPlayer from '@ducanh2912/react-hls-player';
 import DownArrowSVG from '../../../assets/DownArrowSVG';
@@ -15,11 +16,11 @@ import PostCommentsSVG from '../../../assets/PostCommentsSVG';
 import ImageSlide from './ImageSlide/ImageSlide';
 import remarkGfm from 'remark-gfm';
 import { loadComments } from '../../../Features/Api/redditApiSlice';
+import { useMediaQuery } from 'react-responsive';
 
 export default function Post({data, previewPage, userFeed, showComments}) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { subreddit } = useParams();
   const currentPage = useSelector(selectCurrentPage);
   const nightMode = useSelector(selectNightmode);
 
@@ -39,7 +40,6 @@ export default function Post({data, previewPage, userFeed, showComments}) {
     ]
     if(validClassNames.includes(e.target.className) && !userFeed || 
        e.target.tagName === 'P' && e.target.className !== 'post-subreddit-link link-disabled' && e.target.className !== 'post-created-by' &&  !userFeed) {
-      console.log(e.target.className);
       navigate(data.permalink);
       dispatch(toggleIsFromSite());
     } else if(userFeed && validClassNames.includes(e.target.className) ||
@@ -47,24 +47,28 @@ export default function Post({data, previewPage, userFeed, showComments}) {
       showComments(true);
       dispatch(loadComments(data.permalink));
     } 
-    else {
-      console.info(`Opening rejected clicked elem classname: ${e.target.className ? e.target.className : 'none'} and tagName: ${e.target.tagName}`)
-    }
   }
   const handlePostClick = () => {
     dispatch(toggleIsFromSite());
   }
 
+  const isSmallishSize = useMediaQuery({ query: '(max-width: 550px)' });
+  const isSmallSize = useMediaQuery({ query: '(max-width: 500px)' });
 
   return (
-    <div className={nightMode ? 'post dark' : 'post light'}>
+    <div className={nightMode && !previewPage ? 'post dark' 
+                   : !nightMode && !previewPage ? 'post light'
+                   : nightMode && previewPage ? 'post dark preview' 
+                   : !nightMode && previewPage ? 'post light preview'
+                   : 'post'
+                   }>
         <div className='post-sidebar'>
         <button 
         className='vote-button'
         aria-hidden="true"
         onClick={!previewPage ? toggleNotificationOverlay : 
-        () => { console.info('Functionality Disabled') }}>
-          <UpArrowSVG />
+        () => { }}>
+          <UpArrowSVG width={isSmallishSize ? '40' : null} height={isSmallishSize ? '40' : null}/>
           </button>
           <p className='score'>
             {data.score < 1000 ? data.score : 
@@ -74,8 +78,8 @@ export default function Post({data, previewPage, userFeed, showComments}) {
           className='vote-button'
           aria-hidden="true"
           onClick={!previewPage ? toggleNotificationOverlay : 
-          () => { console.info('Functionality Disabled') }}>
-          <DownArrowSVG />
+          () => { }}>
+          <DownArrowSVG width={isSmallishSize ? '40' : null} height={isSmallishSize ? '40' : null}/>
           </button>
         </div>
       <div 
@@ -96,9 +100,11 @@ export default function Post({data, previewPage, userFeed, showComments}) {
           onClick={() => { navigate(`/user/${data.author}`) }}>
            Posted by {data.author}
           </p>
+          { !isSmallSize &&
           <p className='post-created-ago'>
             { formatTime(data.created_utc) }
           </p>
+          }
         </div>
         <div 
         className='post-body'>
@@ -127,11 +133,11 @@ export default function Post({data, previewPage, userFeed, showComments}) {
         </a> :
         data.selftext !== '' ?
         <div className='markdown-selftext'>
-          <ReactMarkdown children={previewPage ? fixRedditMarkdown(data.selftext) : fixRedditMarkdown(shortenLink(data.selftext, 500))} remarkPlugins={[remarkGfm]}/>
+          <Interweave content={fixRedditMarkdown(data.selftext_html)} />
         </div> : 
         !data.post_hint && data.media_metadata ?
-        <ImageSlide data={data.media_metadata} /> :
-        data.url.includes('youtube') ?
+        <ImageSlide data={data.media_metadata} preview={true}/> :
+        data.url.includes('youtube') || data.url.includes('youtu.be') ?
         <iframe src={convertToEmbeddedURL(data.url)} ></iframe>  :
         <br data-testid='br' />}
         </div>

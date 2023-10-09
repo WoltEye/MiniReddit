@@ -49,3 +49,48 @@
 .user-feed-type-selector.dark a {
     color: whitesmoke;
   }
+
+@media only screen and (max-width: 820px) {
+  .user-feed-type-selector {
+    justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 645px) {
+  .user-feed-type {
+    margin: 0 1rem;
+    font-size: .9rem;
+  }
+}
+
+@media only screen and (max-width: 470px) {
+  .user-feed-type {
+    margin: 0 .5rem;
+    font-size: .8rem;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .user-feed-type {
+    margin: 0 .4rem;
+    font-size: .75rem;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .user-feed-type {
+    margin: 0 .2rem;
+  }
+}
+
+@media only screen and (max-width: 364px) {
+  .user-feed-type {
+    margin: 0;
+  }
+  .user-feed-type {
+    margin: 0 .5rem;
+  }
+  .user-feed-type-selector {
+    gap: .5rem;
+  }
+}

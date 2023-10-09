@@ -8,6 +8,7 @@ import SearchBar from './SearchBar/SearchBar';
 import NightmodeSwitch from './NightmodeSwitch/NightmodeSwitch'
 import { selectCurrentPage, selectNightmode, changeCurrentPage, changeCurrentFilterMethod } from '../../Features/CurrentPage/currentPageSlice';
 import { fixRedditLink } from '../../utils/helperFunctions';
+import { useMediaQuery } from 'react-responsive'
 
 export default function NavBar() {
     const { subreddit, postId } = useParams();
@@ -23,6 +24,10 @@ export default function NavBar() {
     const dispatch = useDispatch();
     const location = useLocation();
     const isHomePage = location.pathname === '/';
+
+    const isSmallScreen = useMediaQuery({ query: '(max-width: 1050px)' })
+    const isTinyScreen = useMediaQuery({ query: '(max-width: 855px)' })
+    const isMicroScreen = useMediaQuery({ query: '(max-width: 500px)' })
 
     const handleClick = () => { 
       dispatch(clearEverything());
@@ -41,11 +46,12 @@ export default function NavBar() {
         <img src={navLogo} alt="navigation bar logo" className='nav-logo'/>
         </Link> }
         <div className='main-nav-bar-content-container'>
-        { userProfile.data &&
+        { userProfile.data && !isTinyScreen &&
           <img 
           src={fixRedditLink(userProfile.data.icon_img)}
           className='main-nav-bar-user-icon' />
         }
+        { !isTinyScreen &&
         <h1>
           { subredditData && subreddit ?
            subredditData.display_name_prefixed 
@@ -57,9 +63,12 @@ export default function NavBar() {
            'r/All' 
            : 'Loading...'}
         </h1>
+        }
         </div>
         <SearchBar />
+        { !isSmallScreen &&
         <NightmodeSwitch />
+        }
       </div>
       </nav>
     )

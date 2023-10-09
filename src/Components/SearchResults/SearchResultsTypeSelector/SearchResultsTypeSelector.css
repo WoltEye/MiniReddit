@@ -52,3 +52,42 @@
 .search-results-type-selector.dark .type.selected {
     background: rgba(255, 255, 255, 0.3);
 }
+
+@media only screen and (max-width: 715px) {
+  .search-results-type-selector {
+    width: 38rem;
+  }
+}
+
+@media only screen and (max-width: 635px) {
+  .search-results-type-selector {
+    width: 34rem;
+  }
+}
+
+@media only screen and (max-width: 570px) {
+  .search-results-type-selector {
+    width: 30rem;
+  }
+}
+
+@media only screen and (max-width: 500px) { 
+  .search-results-type-selector {
+    width: 28rem;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .search-results-type-selector {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 440px) {
+  .search-results-type-selector {
+    gap: 2rem;
+  }
+  .search-results-type-selector p {
+    font-size: .8rem;
+  }
+}

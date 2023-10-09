@@ -83,3 +83,14 @@ a.loading {
 .best {
   margin-left: .5rem;
 }
+
+@media only screen and (max-width: 460px) { 
+  .secondary-navigation {
+    width: 20rem;
+    gap: .6rem;
+  }
+  .secondary-navigation a {
+    padding: .5rem .3rem;
+    font-size: .8rem;
+  }
+}

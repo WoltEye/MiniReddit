@@ -39,7 +39,6 @@ export default function SearchResultsFilterSelector() {
                 e.target.className.includes('time')) {
                   if(e.target.className.includes('popularity')) {
                       setTimeFilterDropdown(false);
-                      console.log(timeFilterDropdown);
                     } else {
                       setPopularityFilterDropdown(false);
                     }

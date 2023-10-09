@@ -7,6 +7,7 @@ import './UserComment.css';
 import PostCommentsSVG from '../../../assets/PostCommentsSVG';
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import { useMediaQuery } from 'react-responsive';
 
 export default function UserComment({ data, showComments }) {
   const nightMode = useSelector(selectNightmode);
@@ -19,18 +20,34 @@ export default function UserComment({ data, showComments }) {
     }
   }
 
+  const isMediumSize = useMediaQuery({ query: '(max-width: 830px)' });
+  const isSmallSize = useMediaQuery({ query: '(max-width: 500px)' });
+  const isMicroSize = useMediaQuery({ query: '(max-width: 450px)' });
+  const isReallyFSmall = useMediaQuery({ query: '(max-width: 405px)' });
+
   return (
     <div 
     className={nightMode ? 'user-comment dark' : 'user-comment light'}
     onClick={handleShowComments}>
       <div className='user-comment-content-container'>
         <div className='user-comment-text-container'>
+          { !isMediumSize &&
           <PostCommentsSVG userComment={true}/>
+          }
+          
+          { !isReallyFSmall &&
+          <>
           <p>
             {data.author} commented on 
           </p>
           <p className='user-comment-commented-on'>
-            {shortenLink(data.link_title, 40)}
+            { !isMediumSize && !isSmallSize && !isMicroSize ?
+            shortenLink(data.link_title, 40) :
+              isMediumSize && !isSmallSize && !isMicroSize ?
+            shortenLink(data.link_title, 30) :
+              isSmallSize && !isMicroSize ?
+            shortenLink(data.link_title, 20) :
+            shortenLink(data.link_title, 10) }
           </p>
           <p className='user-comment-dot'>
             •
@@ -40,27 +57,34 @@ export default function UserComment({ data, showComments }) {
           onClick={() => {  navigate(`/${data.subreddit_name_prefixed}`) }}>
             {data.subreddit_name_prefixed}
           </p>
+          </>
+          }
+          { !isMediumSize &&
           <p className='user-comment-dot'>
             •
           </p>
+          }
+          { !isMediumSize &&
           <p 
           className='user-commment-link-author'
           onClick={() => { navigate(`/user/${data.link_author}`) }}>
-            Posted by u/{data.link_author}
+            Posted by {data.link_author}  
           </p>
+          }
         </div>
+        { !isReallyFSmall && 
         <hr />
+        }
         <div className='user-comment-body'>
           <div className='user-comment-body-content-container'>
           <div className='user-comment-body-text-container'>
               <p className='user-comment-author'>{data.author}</p>
-              <p>{formatNumber(data.score)} Points</p>
+              <p className='user-comment-points'>{formatNumber(data.score)} Points</p>
               <p className='user-comment-dot'>•</p>
-              <p>{formatTime(data.created_utc)}</p>
+              <p className='user-comment-created-at'>{formatTime(data.created_utc)}</p>
             </div>
               <ReactMarkdown
-               children={fixRedditMarkdown(removeAmp(data.body))} 
-               remarkPlugins={[remarkGfm]}/>
+               children={fixRedditMarkdown(removeAmp(data.body))} />
            </div>
         </div>
       </div>

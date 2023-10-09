@@ -19,7 +19,6 @@ export default function NotificationOverlay() {
            This application doesn't support interactions like 
            posting comments or liking posts. This functionality
            <strong> might</strong> be added in future updates.
-           Read more <a href="#">here</a>
         </p>
         <button onClick={handleClose}>
           Gotcha

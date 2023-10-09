@@ -3,6 +3,7 @@
   max-width: 50rem;
   border-radius: 5px;
   transition: 250ms all;
+  overflow: hidden;
 }
 
 .user-comment:hover {
@@ -73,6 +74,17 @@
   background: rgb(230, 230, 230);
 }
 
+.user-comment-author {
+  white-space: nowrap;
+}
+
+.user-comment-created-at {
+  white-space: nowrap;
+}
+
+.user-comment-points {
+  white-space: nowrap;
+}
 
 .user-comment.dark .user-comment-body {
   background: rgb(70, 70, 70);
@@ -119,4 +131,73 @@
 
 .user-commment-link-author:hover {
   text-decoration: underline;
+}
+
+@media only screen and (max-width: 830px) {
+  .user-comment {
+    max-width: 45rem;
+  }
+  .user-comment-content-container {
+    padding: .2rem;
+  }
+  .user-comment-text-container {
+    font-size: .8rem;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .user-comment {
+    max-width: 40rem;
+  }
+  .user-comment-content-container {
+    padding: .1rem;
+  }
+  .user-comment-text-container {
+    font-size: .75rem;
+  }
+}
+
+@media only screen and (max-width: 670px) {
+  .user-comment {
+    max-width: 33rem;
+  }
+  .user-comment-content-container {
+    padding: .1rem;
+  }
+  .user-comment-body {
+    margin: .3rem auto;
+  }
+}
+
+@media only screen and (max-width: 560px) {
+  .user-comment {
+    max-width: 30rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .user-comment {
+    max-width: 27rem;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .user-comment {
+    max-width: 24rem;
+  }
+}
+
+@media only screen and (max-width: 405px) {
+  .user-comment {
+    max-width: 22rem;
+  }
+}
+
+@media only screen and (max-width: 365px) {
+  .user-comment {
+    max-width: 20rem;
+  }
+  .user-comment-body-text-container {
+    font-size: .7rem;
+  }
 }

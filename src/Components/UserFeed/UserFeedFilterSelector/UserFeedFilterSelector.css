@@ -70,3 +70,55 @@
   flex-direction: row;
   align-items: center;
 }
+
+@media only screen and (max-width: 930px) {
+  .user-feed-filter-selector {
+    width: 34rem;
+  }
+  .filter-selector-item-container {
+    padding: .35rem .55rem;
+    font-size: .85rem;  
+  } 
+}
+
+@media only screen and (max-width: 890px) {
+  .filter-selector-item-container {
+    padding: .3rem .5rem;
+    font-size: .8rem;  
+  } 
+}
+
+@media only screen and (max-width: 640px) {
+  .user-feed-filter-selector {
+    width: 32rem;
+  }
+}
+
+@media only screen and (max-width: 530px) {
+  .filter-selector-item-container {
+    padding: .3rem .5rem;
+    font-size: .8rem;  
+  } 
+  .user-feed-filter-selector {
+    width: 27rem;
+    gap: 3rem;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .user-feed-filter-selector {
+    width: 24rem;
+    gap: 2rem;
+  }
+}
+
+@media only screen and (max-width: 405px) {
+  .user-feed-filter-selector {
+    width: 20rem;
+    gap: 1rem;
+  }
+  .filter-selector-item-container {
+    padding: .2rem .4rem;
+    font-size: .75rem;  
+  } 
+}

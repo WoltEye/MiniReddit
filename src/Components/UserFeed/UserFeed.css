@@ -121,3 +121,35 @@
     border: 1px solid rgba(255, 255, 255, .3);;
     color: rgba(255, 255, 255, .5);
   }
+
+  @media only screen and (max-width: 685px) {
+    .user-feed-no-posts-error {
+      width: 35rem;
+      text-align: center;
+    }
+  }
+
+  @media only screen and (max-width: 590px) {
+    .user-feed-no-posts-error {
+      width: 30rem;
+    }
+  }
+
+  @media only screen and (max-width: 510px) {
+    .user-feed-no-posts-error {
+      width: 27rem;
+    }
+  }
+
+  @media only screen and (max-width: 460px) {
+    .user-feed-no-posts-error {
+      width: 23rem;
+    }
+  }
+
+  @media only screen and (max-width: 405px) {
+    .user-feed-no-posts-error {
+      width: 21rem;
+      font-size: 1.8rem;
+    }
+  }
