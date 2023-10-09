@@ -1,5 +1,5 @@
 # MiniReddit
-Minimal version of reddit. [Codecademy](https://www.codecademy.com/) practice project for the Full-Stack course.
+ [Codecademy](https://www.codecademy.com/) practice project for the Full-Stack course.
 
 ## Running a development build locally
 
