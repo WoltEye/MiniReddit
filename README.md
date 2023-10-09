@@ -32,3 +32,6 @@ Fully responsive layout that supports all screen sizes
 
 ## What did I learn from this project?
 How important writing tests really is, this project used to have tests but "they were too boring to make" and I completely removed them which was a huge mistake at the end the project was a lot more complex than I had planned and it was impossible to test that everything works like it should. I also learned that you shouldn't use useEffect everywhere, I used it for every fetch request in this project and it was a HUGE mistake, I spent many days fixing issues that useEffect caused.
+
+## Demo site
+[wolteyeminireddit.netlify.app](https://wolteyeminireddit.netlify.app/)
