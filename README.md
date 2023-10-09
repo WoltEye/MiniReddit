@@ -16,8 +16,8 @@ Requirements: [Node.js 18^](https://nodejs.org/en)
 
 ## Fully Responsive Layout
 Fully responsive layout that supports all screen sizes
-![example](https://i.ibb.co/rxL2RxJ/swappy-20231009-225827.png)
-![example](https://i.ibb.co/0rhv6yk/swappy-20231009-225937.png)
+![example](githubMedia/swappy-20231009-225827.png)
+![example](githubMedia/swappy-20231009-225937.png)
 
 
 ## Technologies used
