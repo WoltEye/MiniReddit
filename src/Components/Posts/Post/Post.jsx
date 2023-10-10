@@ -45,7 +45,7 @@ export default function Post({data, previewPage, userFeed, showComments}) {
     } else if(userFeed && validClassNames.includes(e.target.className) ||
       e.target.tagName === 'P' && e.target.className !== 'post-subreddit-link link-disabled' && userFeed) {
       showComments(true);
-      dispatch(loadComments(data.permalink));
+      dispatch(loadComments({fetchParams: data.permalink}));
     } 
   }
   const handlePostClick = () => {
