@@ -12,6 +12,7 @@ const currentPageSlice = createSlice({
     currentUserFeedFilter: 'overview',
     currentUserFeedPopularityFilter: 'new',
     currentUserFeedTimeFilter: 'all',
+    currentCommentFilter: '',
     nightmode: true
   },
   reducers: {
@@ -59,6 +60,12 @@ const currentPageSlice = createSlice({
     },
     changeCurrentUserFeedTimeFilter: (state, action) => {
       state.currentUserFeedTimeFilter = action.payload;
+    },
+    changeCurrentCommentFilter: (state, action) => {
+      state.currentCommentFilter = action.payload;
+    },
+    resetCurrentCommentFilter: (state) => {
+      state.currentCommentFilter = '';
     }
   }
 })
@@ -74,6 +81,7 @@ export const selectCurrentUserFeedFilter = state => state.currentPage.currentUse
 export const selectCurrentSearchTimeSort = state => state.currentPage.currentSearchTimeSort;
 export const selectCurrentUserFeedPopularityFilter = state => state.currentPage.currentUserFeedPopularityFilter;
 export const selectCurrentUserFeedTimeFilter = state => state.currentPage.currentUserFeedTimeFilter;
+export const selectCurrentCommentFilter = state => state.currentPage.currentCommentFilter;
 
 export const { changeCurrentPage,
                changeCurrentFilterMethod,
@@ -88,6 +96,8 @@ export const { changeCurrentPage,
                changeCurrentSearchTimeSort,
                changeCurrentUserFeedPopularityFilter,
                resetSearchFilters,
-               changeCurrentUserFeedTimeFilter
+               changeCurrentUserFeedTimeFilter,
+               changeCurrentCommentFilter,
+               resetCurrentCommentFilter
                } = currentPageSlice.actions;
 export default currentPageSlice.reducer;

@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import Comment from './Comment/Comment.jsx';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectCurrentComments, loadComments, selectIsLoading, selectCommentsIsLoading } from '../../Features/Api/redditApiSlice.js';
-import { changeCurrentPage, selectIsFromSite, selectNightmode, toggleIsFromSite } from '../../Features/CurrentPage/currentPageSlice.js';
+import { changeCurrentCommentFilter, changeCurrentPage, selectCurrentCommentFilter, selectIsFromSite, selectNightmode, toggleIsFromSite } from '../../Features/CurrentPage/currentPageSlice.js';
 import './CommentsOverlay.css';
 import Post from '../Posts/Post/Post.jsx';
 import NoCommentsSVG from '../../assets/NoCommentsSVG.jsx';
@@ -21,6 +21,7 @@ export default function CommentsOverlay({disableDefaultBehaviour, showComments})
   const isFromSite = useSelector(selectIsFromSite);
   const nightMode = useSelector(selectNightmode);
   const commentsIsLoading = useSelector(selectCommentsIsLoading);
+  const currentCommentFilter = useSelector(selectCurrentCommentFilter);
   const dispatch = useDispatch();
   const { subreddit, postId, postName } = useParams();
   const fetchParams = `/r/${subreddit}/comments/${postId}/${postName}`;
@@ -80,6 +81,9 @@ export default function CommentsOverlay({disableDefaultBehaviour, showComments})
   }
   
   useEffect(() => {
+    if(sort) {
+      dispatch(changeCurrentCommentFilter(sort));
+    }
     if(!disableDefaultBehaviour) {
     dispatch(loadComments({ fetchParams, sort }));
     }
@@ -87,10 +91,14 @@ export default function CommentsOverlay({disableDefaultBehaviour, showComments})
     return () => {
       setFilterChangeAmount(0);
       setInitialPageLoadStatus(false);
+      dispatch(changeCurrentCommentFilter(''));
     }
   }, []);
 
   useEffect(() => {
+    if(sort) {
+      dispatch(changeCurrentCommentFilter(sort));
+    }
     if(commentsData && initialPageLoadStatus) {
       dispatch(loadComments({fetchParams, sort}));
       setFilterChangeAmount(prev => prev - 1);

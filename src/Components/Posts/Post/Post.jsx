@@ -9,7 +9,7 @@ import DownArrowSVG from '../../../assets/DownArrowSVG';
 import UpArrowSVG from '../../../assets/UpArrowSVG.jsx';
 import { toggleNotification } from '../../NotificationOverlay/notificationOverlaySlice';
 import { selectCurrentPage, selectNightmode, toggleIsFromSite } from '../../../Features/CurrentPage/currentPageSlice';
-import { formatNumber, formatTime, shortenLink, convertToEmbeddedURL, removeAmp, fixRedditMarkdown } from '../../../utils/helperFunctions';
+import { fixRedditLink, formatNumber, formatTime, shortenLink, convertToEmbeddedURL, removeAmp, fixRedditMarkdown } from '../../../utils/helperFunctions';
 import './Post.css'
 import LinkSVG from '../../../assets/LinkSVG';
 import PostCommentsSVG from '../../../assets/PostCommentsSVG';
@@ -118,10 +118,9 @@ export default function Post({data, previewPage, userFeed, showComments}) {
         alt='Cant Load Thumbnail' 
         className='thumbnail'/> : data.is_video ?
         <ReactHlsPlayer
-        data-testid='video'
         controls={true}
         className='thumbnail'
-        src={data.secure_media.reddit_video.hls_url} /> :
+        src={fixRedditLink(data.secure_media.reddit_video.hls_url)} /> :
         data.post_hint === 'link' || !data.url.includes('reddit') && !data.url.includes('youtube') ? 
         <a href={data.url} 
         target="_blank"

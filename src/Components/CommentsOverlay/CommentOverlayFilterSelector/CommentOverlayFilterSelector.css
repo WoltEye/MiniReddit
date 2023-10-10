@@ -1,5 +1,6 @@
 .comment-overlay-filter-selector {
   transition: 250ms all;
+  width: 7rem;
 }
 
 .comment-overlay-filter-selector * {
@@ -9,7 +10,7 @@
 .comment-overlay-filter-button {
   background: transparent;
   height: 1.2rem;
-  width: 6rem;
+  width: 7rem;
   font-weight: bold;
   display: flex;
   flex-direction: row;

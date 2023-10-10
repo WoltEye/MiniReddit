@@ -51,6 +51,20 @@
   cursor: pointer;
 }
 
+.user-feed-filter-selector.light .filter-selector-item.active { 
+  color: #0470d4;
+  background: rgb(220,220,220);
+}
+
+.user-feed-filter-selector.light .filter-selector-item:hover {
+  color: #0470d4!important;
+  background: rgb(220,220,220);
+}
+
+.user-feed-filter-selector.light .filter-selector-item.inactive { 
+  color: rgb(100,100,100);
+}
+
 .user-feed-filter-selector.dark .filter-selector-item.active { 
   color: whitesmoke;
   background: rgb(100,100,100);

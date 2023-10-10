@@ -179,6 +179,25 @@ export const getUserFeedTimeFilterDisplayName = (filter) => {
   }
 }
 
+export const getCommentFilterDisplayString = string => {
+  switch(string) {
+    case 'confidence':
+      return 'Best';
+    case 'top':
+      return 'Top';
+    case 'new':
+      return 'New';
+    case 'controversial':
+      return 'Controversial';
+    case 'old':
+      return 'Old';
+    case 'qa':
+      return 'Q&A';
+    default: 
+      return string;
+  }
+}
+
 /* While browsing users comments the permalink has a unique id which only
    returns the comment the user posted and not the other comments on that
    post. This is not the behaviour I want. This function removes the unique
