@@ -3,8 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ReactMarkdown from 'react-markdown'
 import { Interweave } from 'interweave';
-//Using ReactHlsPlayer because html video player doesn't support hls file format
-import ReactHlsPlayer from '@ducanh2912/react-hls-player';
+import ReactPlayer from 'react-player'
 import DownArrowSVG from '../../../assets/DownArrowSVG';
 import UpArrowSVG from '../../../assets/UpArrowSVG.jsx';
 import { toggleNotification } from '../../NotificationOverlay/notificationOverlaySlice';
@@ -127,10 +126,11 @@ export default function Post({data, previewPage, userFeed, showComments}) {
         }
         className='thumbnail' /> :
         data.is_video ?
-        <ReactHlsPlayer
+        <ReactPlayer
+        url={fixRedditLink(data.secure_media.reddit_video.hls_url)}
         controls={true}
-        className='thumbnail-video'
-        src={fixRedditLink(data.secure_media.reddit_video.hls_url)} /> :
+        className='thumbnail-video' />
+        :
         data.post_hint === 'link' || !data.url.includes('reddit') && !data.url.includes('youtube') ? 
         <a href={data.url} 
         target="_blank"
