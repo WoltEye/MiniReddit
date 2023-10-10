@@ -38,7 +38,7 @@ export default function UserProfile() {
   }
 
   const handleOpenThread = (url) => {
-    dispatch(loadComments(url));
+    dispatch(loadComments({fetchParams: url}));
     setShowComments(true);
   }
 

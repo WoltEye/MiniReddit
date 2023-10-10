@@ -83,7 +83,11 @@
   }
 
   .comment-body img {
-    max-width: 10rem;
+    margin: .2rem 0;
+    max-width: 85%;
+    object-fit: contain;
+    object-position: left;
+    max-height: 10rem;
   }
 /* Markdown styling */
 

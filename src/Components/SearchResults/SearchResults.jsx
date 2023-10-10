@@ -30,7 +30,7 @@ export default function SearchResults() {
   const dispatch = useDispatch();
 
   const loadCommentsFromApi = url => {
-    dispatch(loadComments(url));
+    dispatch(loadComments({fetchParams: url}));
   }
 
   const loadMoreSearchResultsFromApi = () => {
