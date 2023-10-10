@@ -47,7 +47,7 @@ export function formatTime(time) {
     return `${seconds} seconds ago`
   }
   else {
-    throw new Error('Error: Cant format time. Time = ' + time)
+    return 'Unknown seconds ago'
   }
 }
 /* ReactMarkdown npm package uses the traditional markdown syntax
