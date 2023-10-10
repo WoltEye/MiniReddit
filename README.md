@@ -1,3 +1,4 @@
+![Heading Logo](githubMedia/minireddit.png)
 # MiniReddit
  [Codecademy](https://www.codecademy.com/) practice project for the Full-Stack course.
 
