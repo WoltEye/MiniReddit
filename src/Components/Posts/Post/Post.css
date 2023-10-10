@@ -65,6 +65,7 @@
   display: block;
   color: red;
   font-size: 1rem;
+  object-fit: contain;
 }
 
 .thumbnail-video {

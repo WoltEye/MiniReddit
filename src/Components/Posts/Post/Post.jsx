@@ -116,6 +116,15 @@ export default function Post({data, previewPage, userFeed, showComments}) {
         <img
         src={fixRedditLink(data.preview.images[0].source.url)}
         alt="Cant Load Thumbnail"
+        style={ data.preview.images[0].source.width && 
+                data.preview.images[0].source.height ?
+        {
+          width: data.preview.images[0].source.width,
+          height: data.preview.images[0].source.height
+        }
+        : 
+        {}
+        }
         className='thumbnail' /> :
         data.is_video ?
         <ReactHlsPlayer
