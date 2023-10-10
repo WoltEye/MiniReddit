@@ -67,6 +67,16 @@
   font-size: 1rem;
 }
 
+.thumbnail-video {
+  max-width: 95%;
+  max-height: 25rem;
+  border-radius: 5px;
+  margin: 1rem auto;
+  display: block;
+  color: red;
+  font-size: 1rem;
+}
+
 .dot {
   font-size: .8rem
 }

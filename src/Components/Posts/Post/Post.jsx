@@ -119,7 +119,7 @@ export default function Post({data, previewPage, userFeed, showComments}) {
         className='thumbnail'/> : data.is_video ?
         <ReactHlsPlayer
         controls={true}
-        className='thumbnail'
+        className='thumbnail-video'
         src={fixRedditLink(data.secure_media.reddit_video.hls_url)} /> :
         data.post_hint === 'link' || !data.url.includes('reddit') && !data.url.includes('youtube') ? 
         <a href={data.url} 
