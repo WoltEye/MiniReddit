@@ -1,6 +1,7 @@
 <p align="center">
   <img src="./githubMedia/minireddit.png" />
 </p>
+
 # MiniReddit
  [Codecademy](https://www.codecademy.com/) practice project for the Full-Stack course.
 
