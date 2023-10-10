@@ -15,8 +15,8 @@ Requirements: [Node.js 18^](https://nodejs.org/en)
 
 ## Known issues
 - Markdown support isn't the best right now, its really buggy.
-- All comment replies are not visible. *(This issue will not be fixed. The "missing" comments need a extra fetch request which would make the app even more easy to break because of [reddit's new api policy](https://www.reddit.com/r/redditdev/comments/14nbw6g/updated_rate_limits_going_into_effect_over_the/))*
-- The app is really easy to break and its very unstable due to [reddit's new api policy](https://www.reddit.com/r/redditdev/comments/14nbw6g/updated_rate_limits_going_into_effect_over_the) x2 :)
+- All comment replies are not visible. *(This issue will not be fixed. The "missing" comments need a extra fetch request which would make the app even more likely to reach the reddit's ratelimit. [Reddit's new api policy](https://www.reddit.com/r/redditdev/comments/14nbw6g/updated_rate_limits_going_into_effect_over_the/))*
+- The app can be very unstable due to [reddit's new api policy](https://www.reddit.com/r/redditdev/comments/14nbw6g/updated_rate_limits_going_into_effect_over_the) x2 :)
 
 ## Fully Responsive Layout
 Fully responsive layout that supports all screen sizes
