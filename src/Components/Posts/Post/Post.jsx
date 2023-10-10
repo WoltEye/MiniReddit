@@ -112,11 +112,12 @@ export default function Post({data, previewPage, userFeed, showComments}) {
         className='post-title'>
           {removeAmp(data.title)}
          </h4>
-        { data.post_hint === 'image' || data.url.includes('i.redd.it') ? 
-        <img 
-        src={data.url} 
-        alt='Cant Load Thumbnail' 
-        className='thumbnail'/> : data.is_video ?
+        { data.preview?.images && !data.is_video ?
+        <img
+        src={fixRedditLink(data.preview.images[0].source.url)}
+        alt="Cant Load Thumbnail"
+        className='thumbnail' /> :
+        data.is_video ?
         <ReactHlsPlayer
         controls={true}
         className='thumbnail-video'
