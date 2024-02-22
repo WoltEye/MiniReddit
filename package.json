@@ -13,7 +13,7 @@
     "@aka_theos/react-hls-player": "^1.0.0",
     "@reduxjs/toolkit": "^2.2.1",
     "interweave": "^13.1.0",
-    "moment": "^2.29.4",
+    "moment": "^2.30.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-markdown": "^9.0.1",
